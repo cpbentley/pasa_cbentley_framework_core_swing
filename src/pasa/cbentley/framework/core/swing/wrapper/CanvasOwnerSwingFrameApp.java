@@ -7,7 +7,7 @@ import pasa.cbentley.core.src4.logging.IDLog;
 import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.coreui.src4.engine.WrapperAbstract;
 import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasOwner;
-import pasa.cbentley.framework.coreui.src4.tech.ITechCanvasHost;
+import pasa.cbentley.framework.coreui.src4.tech.IBOCanvasHost;
 import pasa.cbentley.framework.coreui.swing.ctx.CoreUiSwingCtx;
 
 /**
@@ -28,14 +28,14 @@ public class CanvasOwnerSwingFrameApp implements ICanvasOwner {
 
    public WrapperAbstract createNewWrapper(ByteObject tech) {
       //find our wrapper
-      int wrapperType = tech.get1(ITechCanvasHost.TCANVAS_OFFSET_02_WRAPPER_TYPE1);
+      int wrapperType = tech.get1(IBOCanvasHost.TCANVAS_OFFSET_02_WRAPPER_TYPE1);
       WrapperAbstract wrapper = null;
-      if (wrapperType == ITechCanvasHost.TCANVAS_TYPE_0_DEFAULT) {
+      if (wrapperType == IBOCanvasHost.TCANVAS_TYPE_0_DEFAULT) {
          //in a controlled env.. the wrapper is a panel and all new windows must be inside the 
          //semi multi. a new component is drawn over the old one.. like in android. screen size is fixed.
-      } else if (wrapperType == ITechCanvasHost.TCANVAS_TYPE_1_FRAME) {
+      } else if (wrapperType == IBOCanvasHost.TCANVAS_TYPE_1_FRAME) {
          
-      } else if (wrapperType == ITechCanvasHost.TCANVAS_TYPE_2_CONTROLLED) {
+      } else if (wrapperType == IBOCanvasHost.TCANVAS_TYPE_2_CONTROLLED) {
          
       }
       wrapper = new WrapperSwingTopFrameApp(cfc);

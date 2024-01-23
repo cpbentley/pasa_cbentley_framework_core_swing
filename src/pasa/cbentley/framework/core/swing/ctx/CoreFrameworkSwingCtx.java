@@ -5,8 +5,8 @@ import pasa.cbentley.byteobjects.src4.ctx.IConfigBO;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.framework.core.j2se.ctx.CoreFrameworkJ2seCtx;
-import pasa.cbentley.framework.core.src4.interfaces.IHost;
-import pasa.cbentley.framework.core.src4.interfaces.IHostUITools;
+import pasa.cbentley.framework.core.src4.interfaces.IHostCore;
+import pasa.cbentley.framework.core.src4.interfaces.IHostCoreTools;
 import pasa.cbentley.framework.core.src4.interfaces.ILauncherHost;
 import pasa.cbentley.framework.core.swing.engine.CoordinatorSwing;
 import pasa.cbentley.framework.core.swing.engine.SwingHost;
@@ -61,11 +61,11 @@ public class CoreFrameworkSwingCtx extends CoreFrameworkJ2seCtx {
     * 
     * @return
     */
-   public IHost getHost() {
+   public IHostCore getHostCore() {
       return host;
    }
 
-   public IHostUITools getHostTools() {
+   public IHostCoreTools getHostTools() {
       return tools;
    }
 

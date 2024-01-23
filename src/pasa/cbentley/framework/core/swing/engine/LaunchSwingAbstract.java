@@ -16,6 +16,7 @@ import pasa.cbentley.framework.core.src4.interfaces.ILauncherAppli;
 import pasa.cbentley.framework.core.src4.interfaces.ILauncherHost;
 import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.swing.ctx.IConfigCoreFrameworkSwing;
+import pasa.cbentley.framework.coredata.src4.stator.StatorCoreData;
 import pasa.cbentley.framework.coredraw.src4.ctx.IConfigCoreDraw;
 import pasa.cbentley.framework.coredraw.swing.ctx.CoreDrawSwingCtx;
 import pasa.cbentley.framework.coredraw.swing.ctx.IConfigCoreDrawSwing;
@@ -38,15 +39,17 @@ import pasa.cbentley.swing.ctx.SwingCtx;
  */
 public abstract class LaunchSwingAbstract extends LaunchJ2SE implements ILauncherHost {
 
-   protected final CoreDrawSwingCtx cdc;
+   protected final CoreDrawSwingCtx      cdc;
 
-   protected final CoordinatorSwing coordinator;
+   protected final CoordinatorSwing      coordinator;
 
-   protected final CoreFrameworkSwingCtx     csc;
+   protected final CoreFrameworkSwingCtx csc;
 
-   protected final SwingCtx         sc;
+   protected final SwingCtx              sc;
 
-   protected final CoreUiSwingCtx   cuiSwingc;
+   protected final CoreUiSwingCtx        cuiSwingc;
+
+   private ICanvasOwner                  wrapperManager;
 
    public LaunchSwingAbstract() {
       super();
@@ -66,13 +69,22 @@ public abstract class LaunchSwingAbstract extends LaunchJ2SE implements ILaunche
       coordinator = new CoordinatorSwing(csc, this);
 
       //TODO can the wrapper manager depends on the state?
-      ICanvasOwner wrapperManager = createWrapperManager(csc);
+      wrapperManager = createWrapperManager(csc);
+
+      //#debug
+      toDLog().pInit("WrapperManager Created", wrapperManager, LaunchSwingAbstract.class, "LaunchSwingAbstract", LVL_05_FINE, false);
+
       cuiSwingc.setWrapperManager(wrapperManager);
 
-      if (wrapperManager instanceof IStatorFactory) {
-         stateReader.addFactory((IStatorFactory) wrapperManager);
-      }
+      //#debug
+      toDLog().pInit("WrapperManager Created", wrapperManager, LaunchSwingAbstract.class, "LaunchSwingAbstract", LVL_05_FINE, true);
 
+   }
+
+   public void addStatorFactories(StatorCoreData stator) {
+      if (wrapperManager instanceof IStatorFactory) {
+      }
+      super.addStatorFactories(stator);
    }
 
    public J2seCtx createJ2seCtx(UCtx uc, C5Ctx c5, BOCtx boc) {
@@ -132,19 +144,19 @@ public abstract class LaunchSwingAbstract extends LaunchJ2SE implements ILaunche
 
    //#mdebug
    public void toString(Dctx dc) {
-      dc.root(this, "SwingLauncher");
+      dc.root(this, LaunchSwingAbstract.class, "@line135");
       toStringPrivate(dc);
       super.toString(dc.sup());
    }
 
-   public void toString1Line(Dctx dc) {
-      dc.root1Line(this, "SwingLauncher");
-      toStringPrivate(dc);
-      super.toString1Line(dc.sup1Line());
-   }
-
    private void toStringPrivate(Dctx dc) {
 
+   }
+
+   public void toString1Line(Dctx dc) {
+      dc.root1Line(this, LaunchSwingAbstract.class);
+      toStringPrivate(dc);
+      super.toString1Line(dc.sup1Line());
    }
 
    //#enddebug

@@ -8,16 +8,15 @@ import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDLog;
 import pasa.cbentley.core.src4.logging.IStringable;
 import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
+import pasa.cbentley.framework.core.swing.ctx.ObjectCFSwing;
 import pasa.cbentley.framework.coreui.swing.engine.CanvasHostSwing;
 
-public class FrameAppWindowListener implements WindowListener, IStringable {
+public class FrameAppWindowListener extends ObjectCFSwing implements WindowListener, IStringable {
 
-   protected final CoreFrameworkSwingCtx scc;
-
-   private CanvasHostSwing  canvas;
+   private CanvasHostSwing canvas;
 
    public FrameAppWindowListener(CoreFrameworkSwingCtx scc, CanvasHostSwing canvas) {
-      this.scc = scc;
+      super(scc);
       this.canvas = canvas;
    }
 
@@ -49,7 +48,7 @@ public class FrameAppWindowListener implements WindowListener, IStringable {
          }
          System.exit(0);
       } else {
-       
+
       }
    }
 
@@ -70,23 +69,13 @@ public class FrameAppWindowListener implements WindowListener, IStringable {
    public void windowOpened(WindowEvent e) {
 
    }
-   
+
    //#mdebug
-   public IDLog toDLog() {
-      return toStringGetUCtx().toDLog();
-   }
-
-   public String toString() {
-      return Dctx.toString(this);
-   }
-
    public void toString(Dctx dc) {
-      dc.root(this, "FrameAppWindowListener");
+      dc.root(this, FrameAppWindowListener.class, "@line5");
       toStringPrivate(dc);
-   }
-
-   public String toString1Line() {
-      return Dctx.toString1Line(this);
+      super.toString(dc.sup());
+      dc.nlLvl(canvas, "CanvasHostSwing");
    }
 
    private void toStringPrivate(Dctx dc) {
@@ -94,16 +83,11 @@ public class FrameAppWindowListener implements WindowListener, IStringable {
    }
 
    public void toString1Line(Dctx dc) {
-      dc.root1Line(this, "FrameAppWindowListener");
+      dc.root1Line(this, FrameAppWindowListener.class);
       toStringPrivate(dc);
-   }
-
-   public UCtx toStringGetUCtx() {
-      return scc.getUCtx();
+      super.toString1Line(dc.sup1Line());
    }
 
    //#enddebug
-   
-
 
 }
