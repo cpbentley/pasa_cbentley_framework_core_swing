@@ -2,8 +2,8 @@ package pasa.cbentley.framework.core.swing.ctx;
 
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.byteobjects.src4.ctx.IConfigBO;
-import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
+import pasa.cbentley.core.src4.stator.IStatorFactory;
 import pasa.cbentley.framework.core.j2se.ctx.CoreFrameworkJ2seCtx;
 import pasa.cbentley.framework.core.src4.interfaces.IHostCore;
 import pasa.cbentley.framework.core.src4.interfaces.IHostCoreTools;
@@ -19,26 +19,34 @@ import pasa.cbentley.swing.ctx.SwingCtx;
 
 public class CoreFrameworkSwingCtx extends CoreFrameworkJ2seCtx {
 
-   private static final int         CTX_ID = 450;
+   private static final int       CTX_ID = 450;
 
-   protected final IConfigCoreFrameworkSwing config;
+   protected final CoreUiSwingCtx cuc;
 
-   protected final CoreUiSwingCtx   cuc;
+   private SwingHost              host;
 
-   private SwingHost                host;
+   private SwingTools             tools;
 
-   private SwingTools               tools;
+   private StatorFactoryCoreFrameworkSwing factory;
+
+   public CoreFrameworkSwingCtx(CoreUiSwingCtx cuc, CoreData5Ctx dac, CoreIO5Ctx ioc, ILauncherHost launcher) {
+      this(null, cuc, dac, ioc, launcher);
+   }
 
    public CoreFrameworkSwingCtx(IConfigCoreFrameworkSwing config, CoreUiSwingCtx cuc, CoreData5Ctx dac, CoreIO5Ctx ioc, ILauncherHost launcher) {
-      super(config, cuc, dac, ioc, launcher);
-      this.config = config;
+      super(config == null ? new ConfigCoreFrameworkSwingDefault(cuc.getUC()) : config, cuc, dac, ioc, launcher);
       this.cuc = cuc;
       host = new SwingHost(this);
       tools = new SwingTools(this);
-
+      factory = new StatorFactoryCoreFrameworkSwing(this);
       if (this.getClass() == CoreFrameworkSwingCtx.class) {
          a_Init();
       }
+   }
+
+   
+   public IStatorFactory getStatorFactory() {
+      return factory;
    }
 
    public CoordinatorSwing getCoordinatorSwing() {

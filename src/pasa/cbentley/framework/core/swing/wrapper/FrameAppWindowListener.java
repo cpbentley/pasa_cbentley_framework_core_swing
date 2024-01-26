@@ -11,6 +11,11 @@ import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.swing.ctx.ObjectCFSwing;
 import pasa.cbentley.framework.coreui.swing.engine.CanvasHostSwing;
 
+/**
+ * 
+ * @author Charles Bentley
+ *
+ */
 public class FrameAppWindowListener extends ObjectCFSwing implements WindowListener, IStringable {
 
    private CanvasHostSwing canvas;
@@ -32,7 +37,7 @@ public class FrameAppWindowListener extends ObjectCFSwing implements WindowListe
 
    public void windowClosing(WindowEvent e) {
       //
-      if (scc.getCUC().getRootCanvas() == canvas) {
+      if (scc.getCUC().getCanvasRootHost() == canvas) {
          try {
             //exit only if last active JFrame or the root JFrame
             //otherwise call End for the frame content

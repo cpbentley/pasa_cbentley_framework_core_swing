@@ -12,7 +12,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import pasa.cbentley.core.src4.ctx.ICtx;
+import pasa.cbentley.framework.core.src4.app.ITechAppli;
 import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
+import pasa.cbentley.framework.core.swing.ctx.ITechStatorableCoreFrameworkSwing;
 import pasa.cbentley.framework.coreui.swing.engine.CanvasHostSwing;
 import pasa.cbentley.framework.coreui.swing.wrapper.WrapperAbstractSwing;
 import pasa.cbentley.swing.window.CBentleyFrame;
@@ -26,21 +29,21 @@ import pasa.cbentley.swing.window.CBentleyFrame;
  */
 public class SwingCanvasWrapperBorderLayout extends WrapperAbstractSwing implements ActionListener {
 
-   private JPanel        p;
+   private JPanel                p;
 
-   private CBentleyFrame frame;
+   private CBentleyFrame         frame;
 
-   private JButton       buttonStop;
+   private JButton               buttonStop;
 
-   private JButton       buttonStart;
+   private JButton               buttonStart;
 
-   private JButton       buttonPause;
+   private JButton               buttonPause;
 
-   private JLabel        titleLabel;
+   private JLabel                titleLabel;
 
-   private JButton       imgIconButton;
+   private JButton               imgIconButton;
 
-   private CoreFrameworkSwingCtx  scc;
+   private CoreFrameworkSwingCtx scc;
 
    public SwingCanvasWrapperBorderLayout(CoreFrameworkSwingCtx scc) {
       super(scc.getCoreUiSwingCtx());
@@ -85,6 +88,18 @@ public class SwingCanvasWrapperBorderLayout extends WrapperAbstractSwing impleme
 
       //we have buttons to show the ouput of std out of a single appli
       frame.getContentPane().add(p);
+   }
+
+   public int getStatorableClassID() {
+      return ITechStatorableCoreFrameworkSwing.CLASSID_1_WRAPPER_BORDER_LAYOUT;
+   }
+
+   /**
+    * We have to override ctxowner because we subclass from coreui
+    * @return
+    */
+   public ICtx getCtxOwner() {
+      return scc;
    }
 
    /**
@@ -148,6 +163,12 @@ public class SwingCanvasWrapperBorderLayout extends WrapperAbstractSwing impleme
          scc.getCoordinatorSwing().frameworkExit();
          //remove the canvas
          p.remove(canvas.getRealCanvas());
+      } else if(e.getSource() == buttonPause) {
+         if(scc.getCoordinator().getAppli().getState() == ITechAppli.STATE_2_STARTED) {
+            scc.getCoordinator().frameworkPause(); 
+         } else {
+            scc.getCoordinator().frameworkResume(); 
+         }
       }
    }
 

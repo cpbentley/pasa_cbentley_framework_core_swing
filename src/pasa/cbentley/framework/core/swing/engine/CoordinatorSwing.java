@@ -27,7 +27,7 @@ public class CoordinatorSwing extends CoordinatorJ2SE {
       this.scc = scc;
    }
 
-   public boolean loadLastState() {
+   public boolean subLoadLastState() {
       // TODO Auto-generated method stub
       return false;
    }
@@ -35,6 +35,7 @@ public class CoordinatorSwing extends CoordinatorJ2SE {
    protected void startUIThread() {
       javax.swing.SwingUtilities.invokeLater(new Runnable() {
          public void run() {
+            
             initUIThreadInside();
          }
       });

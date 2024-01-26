@@ -6,7 +6,7 @@ import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDLog;
 import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.coreui.src4.engine.WrapperAbstract;
-import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasOwner;
+import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.coreui.src4.tech.IBOCanvasHost;
 import pasa.cbentley.framework.coreui.swing.ctx.CoreUiSwingCtx;
 
@@ -18,7 +18,7 @@ import pasa.cbentley.framework.coreui.swing.ctx.CoreUiSwingCtx;
  * @author Charles Bentley
  *
  */
-public class CanvasOwnerSwingFrameApp implements ICanvasOwner {
+public class CanvasOwnerSwingFrameApp implements IWrapperManager {
 
    protected final CoreFrameworkSwingCtx cfc;
 

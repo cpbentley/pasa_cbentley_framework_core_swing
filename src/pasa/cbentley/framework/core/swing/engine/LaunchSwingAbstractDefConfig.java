@@ -18,12 +18,11 @@ import pasa.cbentley.framework.coredata.src5.ctx.ConfigCoreData5Default;
 import pasa.cbentley.framework.coredata.src5.ctx.IConfigCoreData5;
 import pasa.cbentley.framework.coredraw.swing.ctx.ConfigCoreDrawSwingDef;
 import pasa.cbentley.framework.coredraw.swing.ctx.IConfigCoreDrawSwing;
-import pasa.cbentley.framework.coreio.src5.ctx.ConfigIO5Def;
+import pasa.cbentley.framework.coreio.src5.ctx.ConfigCoreIO5Def;
 import pasa.cbentley.framework.coreio.src5.ctx.IConfigCoreIO5;
 import pasa.cbentley.framework.coreui.j2se.ctx.IConfigCoreUiJ2se;
-import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasOwner;
+import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.coreui.swing.ctx.ConfigCoreUISwingDef;
-import pasa.cbentley.swing.ctx.SwingCtx;
 
 public abstract class LaunchSwingAbstractDefConfig extends LaunchSwingAbstract {
 
@@ -39,9 +38,7 @@ public abstract class LaunchSwingAbstractDefConfig extends LaunchSwingAbstract {
       return new StringProducerBasic(cfc);
    }
 
-   public ICanvasOwner createWrapperManager(CoreFrameworkSwingCtx csc) {
-      return new CanvasOwnerSwingFrameApp(csc);
-   }
+  
 
    public IConfigCoreUiJ2se createConfigCoreUi(UCtx uc) {
       return new ConfigCoreUISwingDef(uc);
@@ -51,8 +48,8 @@ public abstract class LaunchSwingAbstractDefConfig extends LaunchSwingAbstract {
       return new ConfigCoreDrawSwingDef(uc);
    }
 
-   public IConfigCoreFrameworkSwing createConfigCoreSwing(SwingCtx sc) {
-      return new ConfigCoreFrameworkSwingDefault(sc);
+   public IConfigCoreFrameworkSwing createConfigCoreSwing(UCtx uc) {
+      return new ConfigCoreFrameworkSwingDefault(uc);
    }
 
    public IConfigCoreData5 createConfigCoreData5(UCtx uc) {
@@ -60,7 +57,7 @@ public abstract class LaunchSwingAbstractDefConfig extends LaunchSwingAbstract {
    }
 
    public IConfigCoreIO5 createConfigCoreIO(UCtx uc) {
-      return new ConfigIO5Def(c5);
+      return new ConfigCoreIO5Def(uc);
    }
 
 

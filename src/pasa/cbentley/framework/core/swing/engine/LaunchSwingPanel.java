@@ -2,10 +2,8 @@ package pasa.cbentley.framework.core.swing.engine;
 
 import java.awt.Component;
 
-import pasa.cbentley.byteobjects.src4.ctx.BOCtx;
 import pasa.cbentley.core.j2se.ctx.J2seCtx;
 import pasa.cbentley.core.src4.ctx.UCtx;
-import pasa.cbentley.core.src5.ctx.C5Ctx;
 import pasa.cbentley.framework.core.j2se.ctx.ConfigCoreFrameworkJ2SE;
 import pasa.cbentley.framework.core.j2se.ctx.IConfigCoreFrameworkJ2SE;
 import pasa.cbentley.framework.core.src4.app.IConfigApp;
@@ -18,7 +16,7 @@ import pasa.cbentley.framework.coredata.src5.ctx.IConfigCoreData5;
 import pasa.cbentley.framework.coredraw.swing.ctx.IConfigCoreDrawSwing;
 import pasa.cbentley.framework.coreio.src5.ctx.IConfigCoreIO5;
 import pasa.cbentley.framework.coreui.j2se.ctx.IConfigCoreUiJ2se;
-import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasOwner;
+import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.coreui.swing.ctx.CoreUiSwingCtx;
 import pasa.cbentley.framework.coreui.swing.engine.CanvasSwing;
 import pasa.cbentley.swing.ctx.SwingCtx;
@@ -51,12 +49,11 @@ public class LaunchSwingPanel extends LaunchSwingAbstract {
     * @return
     */
    public CanvasSwing getCanvasSwing() {
-      return (CanvasSwing) cuiSwingc.getCanvasRoot();
+      return (CanvasSwing) getCFCSwing().getCoreUiSwingCtx().getCanvasRootHost();
    }
 
-   public IConfigCoreFrameworkJ2SE createConfigCoreJ2SE(J2seCtx j2c) {
-      ConfigCoreFrameworkJ2SE c = new ConfigCoreFrameworkSwingDefault((SwingCtx) j2c);
-      return c;
+   public IConfigCoreFrameworkJ2SE createConfigCoreJ2SE(UCtx uc) {
+      return new ConfigCoreFrameworkSwingDefault(uc);
    }
 
    public Component getCanvasComponent() {
@@ -67,19 +64,15 @@ public class LaunchSwingPanel extends LaunchSwingAbstract {
       return launcher;
    }
 
-   public IConfigApp createConfigApp(UCtx uc,C5Ctx c5, BOCtx bo) {
+   public IConfigApp createConfigApp(UCtx uc) {
       return config;
    }
 
-   public ICanvasOwner createWrapperManager(CoreFrameworkSwingCtx csc) {
+   public IWrapperManager createWrapperManager(CoreFrameworkSwingCtx csc) {
       // TODO Auto-generated method stub
       return null;
    }
 
-   public IConfigCoreFrameworkJ2SE createConfigCoreJ2SE(UCtx uc) {
-      // TODO Auto-generated method stub
-      return null;
-   }
 
    public IConfigCoreUiJ2se createConfigCoreUi(UCtx uc) {
       // TODO Auto-generated method stub
@@ -91,7 +84,7 @@ public class LaunchSwingPanel extends LaunchSwingAbstract {
       return null;
    }
 
-   public IConfigCoreFrameworkSwing createConfigCoreSwing(SwingCtx sc) {
+   public IConfigCoreFrameworkSwing createConfigCoreSwing(UCtx uc) {
       // TODO Auto-generated method stub
       return null;
    }

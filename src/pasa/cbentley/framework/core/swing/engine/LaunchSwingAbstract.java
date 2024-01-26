@@ -6,7 +6,10 @@ import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.stator.IStatorFactory;
 import pasa.cbentley.core.src5.ctx.C5Ctx;
+import pasa.cbentley.core.swing.ctx.SwingCoreCtx;
+import pasa.cbentley.framework.core.j2se.ctx.CoreFrameworkJ2seCtx;
 import pasa.cbentley.framework.core.j2se.ctx.IConfigCoreFrameworkJ2SE;
+import pasa.cbentley.framework.core.j2se.engine.CoordinatorJ2SE;
 import pasa.cbentley.framework.core.j2se.engine.LaunchJ2SE;
 import pasa.cbentley.framework.core.src4.app.IAppli;
 import pasa.cbentley.framework.core.src4.app.IConfigApp;
@@ -16,16 +19,20 @@ import pasa.cbentley.framework.core.src4.interfaces.ILauncherAppli;
 import pasa.cbentley.framework.core.src4.interfaces.ILauncherHost;
 import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.swing.ctx.IConfigCoreFrameworkSwing;
+import pasa.cbentley.framework.core.swing.wrapper.CanvasOwnerSwingFrameApp;
 import pasa.cbentley.framework.coredata.src4.stator.StatorCoreData;
+import pasa.cbentley.framework.coredata.src5.ctx.CoreData5Ctx;
+import pasa.cbentley.framework.coredraw.j2se.ctx.CoreDrawJ2seCtx;
 import pasa.cbentley.framework.coredraw.src4.ctx.IConfigCoreDraw;
 import pasa.cbentley.framework.coredraw.swing.ctx.CoreDrawSwingCtx;
 import pasa.cbentley.framework.coredraw.swing.ctx.IConfigCoreDrawSwing;
 import pasa.cbentley.framework.coreio.src4.ctx.IConfigCoreIO;
-import pasa.cbentley.framework.coreio.src5.ctx.ConfigIO5Def;
+import pasa.cbentley.framework.coreio.src5.ctx.ConfigCoreIO5Def;
 import pasa.cbentley.framework.coreio.src5.ctx.CoreIO5Ctx;
+import pasa.cbentley.framework.coreui.j2se.ctx.CoreUiJ2seCtx;
 import pasa.cbentley.framework.coreui.j2se.ctx.IConfigCoreUiJ2se;
 import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasAppli;
-import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasOwner;
+import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.coreui.swing.ctx.CoreUiSwingCtx;
 import pasa.cbentley.framework.coreui.swing.wrapper.CanvasOwnerDefaultSwing;
 import pasa.cbentley.swing.ctx.SwingCtx;
@@ -37,78 +44,43 @@ import pasa.cbentley.swing.ctx.SwingCtx;
  * @author Charles Bentley
  *
  */
-public abstract class LaunchSwingAbstract extends LaunchJ2SE implements ILauncherHost {
+public abstract class LaunchSwingAbstract extends LaunchJ2SE {
 
-   protected final CoreDrawSwingCtx      cdc;
-
-   protected final CoordinatorSwing      coordinator;
-
-   protected final CoreFrameworkSwingCtx csc;
-
-   protected final SwingCtx              sc;
-
-   protected final CoreUiSwingCtx        cuiSwingc;
-
-   private ICanvasOwner                  wrapperManager;
+   public LaunchSwingAbstract(CoreFrameworkSwingCtx cfc) {
+      super(cfc);
+   }
 
    public LaunchSwingAbstract() {
       super();
-      sc = (SwingCtx) j2c;
-
-      IConfigCoreDrawSwing configCoreDraw = createConfigCoreDraw(uc);
-      cdc = new CoreDrawSwingCtx(configCoreDraw, sc, boc);
-
-      IConfigCoreUiJ2se configCoreUi = createConfigCoreUi(uc);
-      cuiSwingc = new CoreUiSwingCtx(configCoreUi, cdc, sc, cio5c);
-
-      IConfigCoreFrameworkSwing configCoreFramework = createConfigCoreSwing(sc);
-      csc = new CoreFrameworkSwingCtx(configCoreFramework, cuiSwingc, coreDataCtx, cio5c, this);
-
-      this.cjc = csc;
-
-      coordinator = new CoordinatorSwing(csc, this);
-
-      //TODO can the wrapper manager depends on the state?
-      wrapperManager = createWrapperManager(csc);
-
-      //#debug
-      toDLog().pInit("WrapperManager Created", wrapperManager, LaunchSwingAbstract.class, "LaunchSwingAbstract", LVL_05_FINE, false);
-
-      cuiSwingc.setWrapperManager(wrapperManager);
-
-      //#debug
-      toDLog().pInit("WrapperManager Created", wrapperManager, LaunchSwingAbstract.class, "LaunchSwingAbstract", LVL_05_FINE, true);
-
    }
 
-   public void addStatorFactories(StatorCoreData stator) {
-      if (wrapperManager instanceof IStatorFactory) {
-      }
-      super.addStatorFactories(stator);
+   public CoordinatorJ2SE createCoodinator(CoreFrameworkJ2seCtx cfc) {
+      return new CoordinatorSwing((CoreFrameworkSwingCtx) cfc, this);
+   }
+
+   public CoreDrawJ2seCtx createCoreDrawJ2seCtx(J2seCtx j2c, BOCtx boc) {
+      IConfigCoreDrawSwing configCoreDraw = createConfigCoreDraw(boc.getUC());
+      return new CoreDrawSwingCtx(configCoreDraw, (SwingCoreCtx) j2c, boc);
+   }
+
+   public CoreUiJ2seCtx createCoreUiJ2seCtx(CoreDrawJ2seCtx cdc, CoreIO5Ctx cio5c) {
+      J2seCtx j2c = cdc.getJ2C();
+      IConfigCoreUiJ2se configCoreUi = createConfigCoreUi(j2c.getUC());
+      return new CoreUiSwingCtx(configCoreUi, (CoreDrawSwingCtx) cdc, (SwingCtx) j2c, cio5c);
+   }
+
+   public CoreFrameworkJ2seCtx createCoreFrameworkJ2seCtx(CoreUiJ2seCtx cuc, CoreData5Ctx cdc, CoreIO5Ctx cio5c) {
+      IConfigCoreFrameworkSwing configCoreFramework = createConfigCoreSwing(uc);
+      return new CoreFrameworkSwingCtx(configCoreFramework, (CoreUiSwingCtx) cuc, cdc, cio5c, this);
    }
 
    public J2seCtx createJ2seCtx(UCtx uc, C5Ctx c5, BOCtx boc) {
       return new SwingCtx(c5);
    }
 
-   public CoordinatorAbstract getCoordinator() {
-      return coordinator;
-   }
-
-   public IAppli getAppli() {
-      return coordinator.getAppli();
-   }
-
-   /**
-    * Shortcut
-    * @return
-    */
-   public ICanvasAppli getCanvasAppliRoot() {
-      return coordinator.getAppli().getCanvas(0, null);
-   }
 
    public void appExit() {
-      sc.cmdExit();
+      ((CoreFrameworkSwingCtx) cfc).getSwingCtx().cmdExit();
       super.appExit();
    }
 
@@ -117,29 +89,25 @@ public abstract class LaunchSwingAbstract extends LaunchJ2SE implements ILaunche
     * @param uc
     * @return
     */
-   public abstract IConfigApp createConfigApp(UCtx uc, C5Ctx c5, BOCtx bo);
+   public abstract IConfigApp createConfigApp(UCtx uc);
 
-   public abstract IConfigCoreFrameworkSwing createConfigCoreSwing(SwingCtx sc);
+   public abstract IConfigCoreFrameworkSwing createConfigCoreSwing(UCtx uc);
 
    public abstract IConfigCoreUiJ2se createConfigCoreUi(UCtx uc);
 
    public abstract IConfigCoreDrawSwing createConfigCoreDraw(UCtx uc);
 
-   /**
-    * Decides which swing wrapper to use when creating canvases.
-    * 
-    * <li> {@link CanvasOwnerDefaultSwing}
-    * @param cuc TODO
-    * 
-    * @return {@link ICanvasOwner}
-    */
-   public abstract ICanvasOwner createWrapperManager(CoreFrameworkSwingCtx cuc);
+   public CoreFrameworkSwingCtx getCFCSwing() {
+      return (CoreFrameworkSwingCtx) cfc;
+   }
 
    /**
-    * The {@link CoreFrameworkCtx} created in the constructor
+    * Override to provide a different one.
+    * @param csc
+    * @return
     */
-   public CoreFrameworkCtx getCFC() {
-      return csc;
+   public IWrapperManager createWrapperManager(CoreFrameworkJ2seCtx csc) {
+      return new CanvasOwnerSwingFrameApp((CoreFrameworkSwingCtx) csc);
    }
 
    //#mdebug
