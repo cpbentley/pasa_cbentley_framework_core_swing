@@ -2,9 +2,7 @@ package pasa.cbentley.framework.core.swing.engine;
 
 import java.awt.Component;
 
-import pasa.cbentley.core.j2se.ctx.J2seCtx;
 import pasa.cbentley.core.src4.ctx.UCtx;
-import pasa.cbentley.framework.core.j2se.ctx.ConfigCoreFrameworkJ2SE;
 import pasa.cbentley.framework.core.j2se.ctx.IConfigCoreFrameworkJ2SE;
 import pasa.cbentley.framework.core.src4.app.IConfigApp;
 import pasa.cbentley.framework.core.src4.ctx.CoreFrameworkCtx;
@@ -15,11 +13,9 @@ import pasa.cbentley.framework.core.swing.ctx.IConfigCoreFrameworkSwing;
 import pasa.cbentley.framework.coredata.src5.ctx.IConfigCoreData5;
 import pasa.cbentley.framework.coredraw.swing.ctx.IConfigCoreDrawSwing;
 import pasa.cbentley.framework.coreio.src5.ctx.IConfigCoreIO5;
-import pasa.cbentley.framework.coreui.j2se.ctx.IConfigCoreUiJ2se;
 import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
-import pasa.cbentley.framework.coreui.swing.ctx.CoreUiSwingCtx;
+import pasa.cbentley.framework.coreui.swing.ctx.IConfigCoreUiSwing;
 import pasa.cbentley.framework.coreui.swing.engine.CanvasSwing;
-import pasa.cbentley.swing.ctx.SwingCtx;
 
 /**
  * Launcher for a Drawable used by Swing code
@@ -74,7 +70,7 @@ public class LaunchSwingPanel extends LaunchSwingAbstract {
    }
 
 
-   public IConfigCoreUiJ2se createConfigCoreUi(UCtx uc) {
+   public IConfigCoreUiSwing createConfigCoreUi(UCtx uc) {
       // TODO Auto-generated method stub
       return null;
    }

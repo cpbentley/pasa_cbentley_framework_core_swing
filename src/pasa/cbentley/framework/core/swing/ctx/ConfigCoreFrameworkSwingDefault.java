@@ -6,18 +6,18 @@ import pasa.cbentley.framework.coredraw.src4.ctx.IConfigCoreDraw;
 import pasa.cbentley.framework.coredraw.swing.ctx.ConfigCoreDrawSwingDef;
 import pasa.cbentley.framework.coreui.j2se.ctx.IConfigCoreUiJ2se;
 import pasa.cbentley.framework.coreui.src4.ctx.IConfigCoreUI;
-import pasa.cbentley.framework.coreui.swing.ctx.ConfigCoreUISwingDef;
+import pasa.cbentley.framework.coreui.swing.ctx.ConfigCoreUiSwingDef;
 
 public class ConfigCoreFrameworkSwingDefault extends ConfigCoreFrameworkJ2SE implements IConfigCoreFrameworkSwing {
 
    private ConfigCoreDrawSwingDef configDraw;
 
-   private ConfigCoreUISwingDef   configUI;
+   private ConfigCoreUiSwingDef   configUI;
 
    public ConfigCoreFrameworkSwingDefault(UCtx uc) {
       super(uc);
       configDraw = new ConfigCoreDrawSwingDef(uc);
-      configUI = new ConfigCoreUISwingDef(uc);
+      configUI = new ConfigCoreUiSwingDef(uc);
    }
 
    public IConfigCoreUiJ2se getConfigCoreUiJ2se() {

@@ -11,10 +11,10 @@ import pasa.cbentley.framework.coredraw.swing.ctx.ConfigCoreDrawSwingDef;
 import pasa.cbentley.framework.coredraw.swing.ctx.IConfigCoreDrawSwing;
 import pasa.cbentley.framework.coreio.src5.ctx.ConfigCoreIO5Def;
 import pasa.cbentley.framework.coreio.src5.ctx.IConfigCoreIO5;
-import pasa.cbentley.framework.coreui.j2se.ctx.IConfigCoreUiJ2se;
 import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
-import pasa.cbentley.framework.coreui.swing.ctx.ConfigCoreUISwingDef;
-import pasa.cbentley.framework.coreui.swing.wrapper.CanvasOwnerDefaultSwing;
+import pasa.cbentley.framework.coreui.swing.ctx.ConfigCoreUiSwingDef;
+import pasa.cbentley.framework.coreui.swing.ctx.IConfigCoreUiSwing;
+import pasa.cbentley.framework.coreui.swing.wrapper.WrapperManagerDefaultSwing;
 
 /**
  * {@link LaunchSwingAbstract} that uses a frame canvas owner {@link IWrapperManager}.
@@ -41,8 +41,8 @@ public abstract class LaunchSwingFrame extends LaunchSwingAbstract {
       return new ConfigCoreFrameworkSwingDef(uc);
    }
 
-   public IConfigCoreUiJ2se createConfigCoreUi(UCtx uc) {
-      return new ConfigCoreUISwingDef(uc);
+   public IConfigCoreUiSwing createConfigCoreUi(UCtx uc) {
+      return new ConfigCoreUiSwingDef(uc);
    }
 
    public IConfigCoreDrawSwing createConfigCoreDraw(UCtx uc) {
@@ -50,7 +50,7 @@ public abstract class LaunchSwingFrame extends LaunchSwingAbstract {
    }
 
    public IWrapperManager createWrapperManager(CoreFrameworkSwingCtx cfc) {
-      return new CanvasOwnerDefaultSwing(cfc.getCoreUiSwingCtx());
+      return new WrapperManagerDefaultSwing(cfc.getCoreUiSwingCtx());
    }
 
    public IConfigCoreIO5 createConfigCoreIO(UCtx uc) {

@@ -5,6 +5,7 @@ import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDLog;
 import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
+import pasa.cbentley.framework.coreui.src4.engine.CanvasHostAbstract;
 import pasa.cbentley.framework.coreui.src4.engine.WrapperAbstract;
 import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
 
@@ -67,6 +68,11 @@ public class OwnerControl implements IWrapperManager {
 
    public UCtx toStringGetUCtx() {
       return csc.getUCtx();
+   }
+
+   public CanvasHostAbstract createCanvasHost(WrapperAbstract wrapper, ByteObject canvasTech) {
+      // TODO Auto-generated method stub
+      return null;
    }
 
    //#enddebug

@@ -34,7 +34,8 @@ import pasa.cbentley.framework.coreui.j2se.ctx.IConfigCoreUiJ2se;
 import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasAppli;
 import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.coreui.swing.ctx.CoreUiSwingCtx;
-import pasa.cbentley.framework.coreui.swing.wrapper.CanvasOwnerDefaultSwing;
+import pasa.cbentley.framework.coreui.swing.ctx.IConfigCoreUiSwing;
+import pasa.cbentley.framework.coreui.swing.wrapper.WrapperManagerDefaultSwing;
 import pasa.cbentley.swing.ctx.SwingCtx;
 
 /**
@@ -65,7 +66,7 @@ public abstract class LaunchSwingAbstract extends LaunchJ2SE {
 
    public CoreUiJ2seCtx createCoreUiJ2seCtx(CoreDrawJ2seCtx cdc, CoreIO5Ctx cio5c) {
       J2seCtx j2c = cdc.getJ2C();
-      IConfigCoreUiJ2se configCoreUi = createConfigCoreUi(j2c.getUC());
+      IConfigCoreUiSwing configCoreUi = createConfigCoreUi(j2c.getUC());
       return new CoreUiSwingCtx(configCoreUi, (CoreDrawSwingCtx) cdc, (SwingCtx) j2c, cio5c);
    }
 
@@ -77,7 +78,6 @@ public abstract class LaunchSwingAbstract extends LaunchJ2SE {
    public J2seCtx createJ2seCtx(UCtx uc, C5Ctx c5, BOCtx boc) {
       return new SwingCtx(c5);
    }
-
 
    public void appExit() {
       ((CoreFrameworkSwingCtx) cfc).getSwingCtx().cmdExit();
@@ -93,7 +93,7 @@ public abstract class LaunchSwingAbstract extends LaunchJ2SE {
 
    public abstract IConfigCoreFrameworkSwing createConfigCoreSwing(UCtx uc);
 
-   public abstract IConfigCoreUiJ2se createConfigCoreUi(UCtx uc);
+   public abstract IConfigCoreUiSwing createConfigCoreUi(UCtx uc);
 
    public abstract IConfigCoreDrawSwing createConfigCoreDraw(UCtx uc);
 

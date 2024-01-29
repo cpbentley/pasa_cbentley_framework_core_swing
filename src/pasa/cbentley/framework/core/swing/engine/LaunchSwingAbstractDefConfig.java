@@ -1,28 +1,20 @@
 package pasa.cbentley.framework.core.swing.engine;
 
-import pasa.cbentley.byteobjects.src4.ctx.BOCtx;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.i8n.IStringProducer;
 import pasa.cbentley.core.src4.logging.Dctx;
-import pasa.cbentley.core.src5.ctx.C5Ctx;
-import pasa.cbentley.framework.core.src4.app.IConfigApp;
 import pasa.cbentley.framework.core.src4.ctx.CoreFrameworkCtx;
 import pasa.cbentley.framework.core.src4.i8n.StringProducerBasic;
-import pasa.cbentley.framework.core.src4.interfaces.ILauncherAppli;
 import pasa.cbentley.framework.core.swing.ctx.ConfigCoreFrameworkSwingDefault;
-import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.swing.ctx.IConfigCoreFrameworkSwing;
-import pasa.cbentley.framework.core.swing.engine.LaunchSwingAbstract;
-import pasa.cbentley.framework.core.swing.wrapper.CanvasOwnerSwingFrameApp;
 import pasa.cbentley.framework.coredata.src5.ctx.ConfigCoreData5Default;
 import pasa.cbentley.framework.coredata.src5.ctx.IConfigCoreData5;
 import pasa.cbentley.framework.coredraw.swing.ctx.ConfigCoreDrawSwingDef;
 import pasa.cbentley.framework.coredraw.swing.ctx.IConfigCoreDrawSwing;
 import pasa.cbentley.framework.coreio.src5.ctx.ConfigCoreIO5Def;
 import pasa.cbentley.framework.coreio.src5.ctx.IConfigCoreIO5;
-import pasa.cbentley.framework.coreui.j2se.ctx.IConfigCoreUiJ2se;
-import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
-import pasa.cbentley.framework.coreui.swing.ctx.ConfigCoreUISwingDef;
+import pasa.cbentley.framework.coreui.swing.ctx.ConfigCoreUiSwingDef;
+import pasa.cbentley.framework.coreui.swing.ctx.IConfigCoreUiSwing;
 
 public abstract class LaunchSwingAbstractDefConfig extends LaunchSwingAbstract {
 
@@ -40,8 +32,8 @@ public abstract class LaunchSwingAbstractDefConfig extends LaunchSwingAbstract {
 
   
 
-   public IConfigCoreUiJ2se createConfigCoreUi(UCtx uc) {
-      return new ConfigCoreUISwingDef(uc);
+   public IConfigCoreUiSwing createConfigCoreUi(UCtx uc) {
+      return new ConfigCoreUiSwingDef(uc);
    }
 
    public IConfigCoreDrawSwing createConfigCoreDraw(UCtx uc) {

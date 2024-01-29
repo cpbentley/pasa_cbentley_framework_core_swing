@@ -36,22 +36,15 @@ public class FrameAppWindowListener extends ObjectCFSwing implements WindowListe
    }
 
    public void windowClosing(WindowEvent e) {
-      //
+      //normal behavior is frame is going on hide
       if (scc.getCUC().getCanvasRootHost() == canvas) {
          try {
             //exit only if last active JFrame or the root JFrame
-            //otherwise call End for the frame content
-            //not the whole application
-            //do swing specific exit routine
-            //generate an event that will get caught by core framework module
-            scc.getCoordinatorSwing().frameworkExit();
-            //TODO ask for confirmation ? yes. actually closes unless
-            //guy press. No I still need this... very small frame that autoclose
-            //this is an app choice. but could be implemented in host way
+            //we have no idea at this level how to handle destroys
+            scc.getCoordinator().appliWantBeDestroyed();
          } catch (Exception ex) {
             scc.toDLog().pEx("Exception Caught during Exit Routine. Forcing exit.... signing off", null, FrameAppWindowListener.class, "", ex);
          }
-         System.exit(0);
       } else {
 
       }
