@@ -103,16 +103,16 @@ public abstract class LaunchSwingAbstract extends LaunchJ2SE {
 
    /**
     * Override to provide a different one.
-    * @param csc
+    * @param cfc
     * @return
     */
-   public IWrapperManager createWrapperManager(CoreFrameworkJ2seCtx csc) {
-      return new CanvasOwnerSwingFrameApp((CoreFrameworkSwingCtx) csc);
+   public IWrapperManager createWrapperManager(CoreFrameworkJ2seCtx cfc) {
+      return new CanvasOwnerSwingFrameApp((CoreFrameworkSwingCtx) cfc);
    }
 
    //#mdebug
    public void toString(Dctx dc) {
-      dc.root(this, LaunchSwingAbstract.class, "@line135");
+      dc.root(this, LaunchSwingAbstract.class, 115);
       toStringPrivate(dc);
       super.toString(dc.sup());
    }

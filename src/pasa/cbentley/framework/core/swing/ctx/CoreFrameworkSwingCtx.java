@@ -42,6 +42,9 @@ public class CoreFrameworkSwingCtx extends CoreFrameworkJ2seCtx {
       if (this.getClass() == CoreFrameworkSwingCtx.class) {
          a_Init();
       }
+      
+      //#debug
+      toDLog().pInit("", this, CoreFrameworkSwingCtx.class, "Created@47", LVL_04_FINER, true);
    }
 
    
