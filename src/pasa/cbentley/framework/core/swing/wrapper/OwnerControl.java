@@ -67,7 +67,7 @@ public class OwnerControl implements IWrapperManager {
    }
 
    public UCtx toStringGetUCtx() {
-      return csc.getUCtx();
+      return csc.getUC();
    }
 
    public CanvasHostAbstract createCanvasHost(WrapperAbstract wrapper, ByteObject canvasTech) {

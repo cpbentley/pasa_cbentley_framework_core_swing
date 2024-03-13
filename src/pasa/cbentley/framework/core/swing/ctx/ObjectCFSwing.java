@@ -41,7 +41,7 @@ public class ObjectCFSwing implements IStringable {
    }
 
    public UCtx toStringGetUCtx() {
-      return scc.getUCtx();
+      return scc.getUC();
    }
 
    //#enddebug

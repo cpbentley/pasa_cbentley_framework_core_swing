@@ -57,7 +57,7 @@ public class FrameAppWindowFocusListener implements WindowFocusListener, IString
    }
 
    public UCtx toStringGetUCtx() {
-      return scc.getUCtx();
+      return scc.getUC();
    }
 
 
