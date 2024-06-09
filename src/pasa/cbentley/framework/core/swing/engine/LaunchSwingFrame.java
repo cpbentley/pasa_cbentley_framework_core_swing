@@ -3,7 +3,7 @@ package pasa.cbentley.framework.core.swing.engine;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.framework.core.j2se.engine.LaunchJ2SE;
-import pasa.cbentley.framework.core.src4.interfaces.ILauncherAppli;
+import pasa.cbentley.framework.core.src4.interfaces.ICreatorAppli;
 import pasa.cbentley.framework.core.swing.ctx.ConfigCoreFrameworkSwingDef;
 import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.swing.ctx.IConfigCoreFrameworkSwing;
@@ -27,7 +27,7 @@ import pasa.cbentley.framework.coreui.swing.wrapper.WrapperManagerDefaultSwing;
 public abstract class LaunchSwingFrame extends LaunchSwingAbstract {
 
    /**
-    * The {@link ILauncherAppli} is set afterwards with {@link LaunchJ2SE#startAppli(ILauncherAppli)}
+    * The {@link ICreatorAppli} is set afterwards with {@link LaunchJ2SE#startAppli(ICreatorAppli)}
     */
    public LaunchSwingFrame() {
       super();

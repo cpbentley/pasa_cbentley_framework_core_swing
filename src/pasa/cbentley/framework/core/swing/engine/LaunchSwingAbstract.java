@@ -15,7 +15,7 @@ import pasa.cbentley.framework.core.src4.app.IAppli;
 import pasa.cbentley.framework.core.src4.app.IConfigApp;
 import pasa.cbentley.framework.core.src4.ctx.CoreFrameworkCtx;
 import pasa.cbentley.framework.core.src4.engine.CoordinatorAbstract;
-import pasa.cbentley.framework.core.src4.interfaces.ILauncherAppli;
+import pasa.cbentley.framework.core.src4.interfaces.ICreatorAppli;
 import pasa.cbentley.framework.core.src4.interfaces.ILauncherHost;
 import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.swing.ctx.IConfigCoreFrameworkSwing;

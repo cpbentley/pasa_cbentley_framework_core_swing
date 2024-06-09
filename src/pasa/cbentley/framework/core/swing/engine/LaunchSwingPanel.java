@@ -6,7 +6,7 @@ import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.framework.core.j2se.ctx.IConfigCoreFrameworkJ2SE;
 import pasa.cbentley.framework.core.src4.app.IConfigApp;
 import pasa.cbentley.framework.core.src4.ctx.CoreFrameworkCtx;
-import pasa.cbentley.framework.core.src4.interfaces.ILauncherAppli;
+import pasa.cbentley.framework.core.src4.interfaces.ICreatorAppli;
 import pasa.cbentley.framework.core.swing.ctx.ConfigCoreFrameworkSwingDefault;
 import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.swing.ctx.IConfigCoreFrameworkSwing;
@@ -24,14 +24,14 @@ import pasa.cbentley.framework.coreui.swing.engine.CanvasSwing;
  */
 public class LaunchSwingPanel extends LaunchSwingAbstract {
 
-   private ILauncherAppli launcher;
+   private ICreatorAppli launcher;
 
    private IConfigApp     config;
 
    public LaunchSwingPanel() {
    }
 
-   public LaunchSwingPanel(ILauncherAppli launcher) {
+   public LaunchSwingPanel(ICreatorAppli launcher) {
       this.launcher = launcher;
    }
 
@@ -56,7 +56,7 @@ public class LaunchSwingPanel extends LaunchSwingAbstract {
       return getCanvasSwing().getRealCanvas();
    }
 
-   protected ILauncherAppli createLauncher(UCtx uc) {
+   protected ICreatorAppli createCreator(UCtx uc) {
       return launcher;
    }
 
