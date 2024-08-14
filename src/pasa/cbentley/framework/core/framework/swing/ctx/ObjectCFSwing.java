@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.core.swing.ctx;
+package pasa.cbentley.framework.core.framework.swing.ctx;
 
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;

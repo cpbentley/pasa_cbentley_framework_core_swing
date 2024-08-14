@@ -1,22 +1,22 @@
-package pasa.cbentley.framework.core.swing.wrapper;
+package pasa.cbentley.framework.core.framework.swing.wrapper;
 
 import pasa.cbentley.core.src4.ctx.ICtx;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.stator.StatorReader;
 import pasa.cbentley.core.src4.stator.StatorWriter;
-import pasa.cbentley.framework.core.src4.engine.CoordinatorAbstract;
-import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
-import pasa.cbentley.framework.core.swing.ctx.ITechStatorableCoreFrameworkSwing;
-import pasa.cbentley.framework.coreui.swing.ctx.ITechStatorableCoreUiSwing;
-import pasa.cbentley.framework.coreui.swing.engine.CanvasHostSwing;
-import pasa.cbentley.framework.coreui.swing.wrapper.WrapperSwingTopFrame;
+import pasa.cbentley.framework.core.framework.src4.engine.CoordinatorAbstract;
+import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
+import pasa.cbentley.framework.core.framework.swing.ctx.ITechStatorableCoreFrameworkSwing;
+import pasa.cbentley.framework.core.ui.swing.ctx.ITechStatorableCoreUiSwing;
+import pasa.cbentley.framework.core.ui.swing.engine.CanvasHostSwing;
+import pasa.cbentley.framework.core.ui.swing.wrapper.WrapperSwingTopFrame;
 
 /**
  * 
  * {@link WrapperSwingTopFrame} with framework app lifecycle awareness
  *
- *Using this wrapper, {@link FrameAppWindowListener} will talk to {@link CoordinatorAbstract} and 
+ *  Using this wrapper, {@link FrameAppWindowListener} will talk to {@link CoordinatorAbstract} and 
  * 
  * <li> pauses
  * <li> exit app if this frame is closed
@@ -40,6 +40,7 @@ public class WrapperSwingTopFrameApp extends WrapperSwingTopFrame {
    public int getStatorableClassID() {
       return ITechStatorableCoreFrameworkSwing.CLASSID_2_WRAPPER_SWING_TOP_FRAME_APP;
    }
+
    /**
     * We have to override ctxowner because we subclass from coreui
     * @return
@@ -47,7 +48,7 @@ public class WrapperSwingTopFrameApp extends WrapperSwingTopFrame {
    public ICtx getCtxOwner() {
       return scc;
    }
-   
+
    public void stateReadFrom(StatorReader state) {
       super.stateReadFrom(state);
    }
@@ -55,6 +56,7 @@ public class WrapperSwingTopFrameApp extends WrapperSwingTopFrame {
    public void stateWriteTo(StatorWriter state) {
       super.stateWriteTo(state);
    }
+
    /**
     * Sets the Canvas to the frame
     */
@@ -67,7 +69,7 @@ public class WrapperSwingTopFrameApp extends WrapperSwingTopFrame {
 
    //#mdebug
    public void toString(Dctx dc) {
-      dc.root(this, WrapperSwingTopFrameApp.class, "@line42");
+      dc.root(this, WrapperSwingTopFrameApp.class, 70);
       toStringPrivate(dc);
       super.toString(dc.sup());
    }
@@ -77,7 +79,7 @@ public class WrapperSwingTopFrameApp extends WrapperSwingTopFrame {
    }
 
    public void toString1Line(Dctx dc) {
-      dc.root1Line(this, WrapperSwingTopFrameApp.class);
+      dc.root1Line(this, WrapperSwingTopFrameApp.class, 80);
       toStringPrivate(dc);
       super.toString1Line(dc.sup1Line());
    }

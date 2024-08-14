@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.core.swing.wrapper;
+package pasa.cbentley.framework.core.framework.swing.wrapper;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -13,11 +13,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pasa.cbentley.core.src4.ctx.ICtx;
-import pasa.cbentley.framework.core.src4.app.ITechAppli;
-import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
-import pasa.cbentley.framework.core.swing.ctx.ITechStatorableCoreFrameworkSwing;
-import pasa.cbentley.framework.coreui.swing.engine.CanvasHostSwing;
-import pasa.cbentley.framework.coreui.swing.wrapper.WrapperAbstractSwing;
+import pasa.cbentley.framework.core.framework.src4.app.ITechAppli;
+import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
+import pasa.cbentley.framework.core.framework.swing.ctx.ITechStatorableCoreFrameworkSwing;
+import pasa.cbentley.framework.core.ui.swing.engine.CanvasHostSwing;
+import pasa.cbentley.framework.core.ui.swing.wrapper.WrapperAbstractSwing;
 import pasa.cbentley.swing.window.CBentleyFrame;
 
 /**
@@ -27,7 +27,7 @@ import pasa.cbentley.swing.window.CBentleyFrame;
  * @author Charles Bentley
  *
  */
-public class SwingCanvasWrapperBorderLayout extends WrapperAbstractSwing implements ActionListener {
+public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements ActionListener {
 
    private JPanel                p;
 
@@ -45,7 +45,7 @@ public class SwingCanvasWrapperBorderLayout extends WrapperAbstractSwing impleme
 
    private CoreFrameworkSwingCtx scc;
 
-   public SwingCanvasWrapperBorderLayout(CoreFrameworkSwingCtx scc) {
+   public WrapperBorderLayoutSwing(CoreFrameworkSwingCtx scc) {
       super(scc.getCoreUiSwingCtx());
       this.scc = scc;
       frame = new CBentleyFrame(scc.getSwingCtx());

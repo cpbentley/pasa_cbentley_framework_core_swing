@@ -1,12 +1,12 @@
-package pasa.cbentley.framework.core.swing.ctx;
+package pasa.cbentley.framework.core.framework.swing.ctx;
 
 import pasa.cbentley.core.src4.ctx.ICtx;
 import pasa.cbentley.core.src4.stator.IStatorFactory;
 import pasa.cbentley.core.src4.stator.IStatorable;
 import pasa.cbentley.core.src4.stator.StatorReader;
-import pasa.cbentley.framework.core.swing.wrapper.SwingCanvasWrapperBorderLayout;
-import pasa.cbentley.framework.core.swing.wrapper.WrapperSwingTopFrameApp;
-import pasa.cbentley.framework.coreui.swing.wrapper.WrapperSwingTopFrame;
+import pasa.cbentley.framework.core.framework.swing.wrapper.WrapperBorderLayoutSwing;
+import pasa.cbentley.framework.core.framework.swing.wrapper.WrapperSwingTopFrameApp;
+import pasa.cbentley.framework.core.ui.swing.wrapper.WrapperSwingTopFrame;
 
 public class StatorFactoryCoreFrameworkSwing implements IStatorFactory, ITechStatorableCoreFrameworkSwing {
 
@@ -19,7 +19,7 @@ public class StatorFactoryCoreFrameworkSwing implements IStatorFactory, ITechSta
    public Object[] createArray(int classID, int size) {
       switch (classID) {
          case CLASSID_1_WRAPPER_BORDER_LAYOUT:
-            return new SwingCanvasWrapperBorderLayout[size];
+            return new WrapperBorderLayoutSwing[size];
          case CLASSID_2_WRAPPER_SWING_TOP_FRAME_APP:
             return new WrapperSwingTopFrame[size];
 
@@ -50,7 +50,7 @@ public class StatorFactoryCoreFrameworkSwing implements IStatorFactory, ITechSta
    public Object createObject(StatorReader reader, int classID) {
       switch (classID) {
          case CLASSID_1_WRAPPER_BORDER_LAYOUT:
-            return new SwingCanvasWrapperBorderLayout(cfc);
+            return new WrapperBorderLayoutSwing(cfc);
          case CLASSID_2_WRAPPER_SWING_TOP_FRAME_APP:
             return new WrapperSwingTopFrameApp(cfc);
 

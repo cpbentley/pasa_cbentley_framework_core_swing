@@ -1,20 +1,20 @@
-package pasa.cbentley.framework.core.swing.engine;
+package pasa.cbentley.framework.core.framework.swing.engine;
 
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
+import pasa.cbentley.framework.core.draw.swing.ctx.ConfigCoreDrawSwingDef;
+import pasa.cbentley.framework.core.draw.swing.ctx.IConfigCoreDrawSwing;
+import pasa.cbentley.framework.core.framework.src4.interfaces.ICreatorAppli;
+import pasa.cbentley.framework.core.framework.swing.ctx.ConfigCoreFrameworkSwingDef;
+import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
+import pasa.cbentley.framework.core.framework.swing.ctx.IConfigCoreFrameworkSwing;
+import pasa.cbentley.framework.core.io.src5.ctx.ConfigCoreIO5Def;
+import pasa.cbentley.framework.core.io.src5.ctx.IConfigCoreIO5;
 import pasa.cbentley.framework.core.j2se.engine.LaunchJ2SE;
-import pasa.cbentley.framework.core.src4.interfaces.ICreatorAppli;
-import pasa.cbentley.framework.core.swing.ctx.ConfigCoreFrameworkSwingDef;
-import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
-import pasa.cbentley.framework.core.swing.ctx.IConfigCoreFrameworkSwing;
-import pasa.cbentley.framework.coredraw.swing.ctx.ConfigCoreDrawSwingDef;
-import pasa.cbentley.framework.coredraw.swing.ctx.IConfigCoreDrawSwing;
-import pasa.cbentley.framework.coreio.src5.ctx.ConfigCoreIO5Def;
-import pasa.cbentley.framework.coreio.src5.ctx.IConfigCoreIO5;
-import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
-import pasa.cbentley.framework.coreui.swing.ctx.ConfigCoreUiSwingDef;
-import pasa.cbentley.framework.coreui.swing.ctx.IConfigCoreUiSwing;
-import pasa.cbentley.framework.coreui.swing.wrapper.WrapperManagerDefaultSwing;
+import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
+import pasa.cbentley.framework.core.ui.swing.ctx.ConfigCoreUiSwingDef;
+import pasa.cbentley.framework.core.ui.swing.ctx.IConfigCoreUiSwing;
+import pasa.cbentley.framework.core.ui.swing.wrapper.WrapperManagerDefaultSwing;
 
 /**
  * {@link LaunchSwingAbstract} that uses a frame canvas owner {@link IWrapperManager}.

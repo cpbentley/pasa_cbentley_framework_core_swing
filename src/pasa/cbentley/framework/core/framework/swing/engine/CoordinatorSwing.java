@@ -1,10 +1,10 @@
-package pasa.cbentley.framework.core.swing.engine;
+package pasa.cbentley.framework.core.framework.swing.engine;
 
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
-import pasa.cbentley.framework.core.j2se.engine.CoordinatorJ2SE;
-import pasa.cbentley.framework.core.src4.interfaces.ILauncherHost;
-import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
+import pasa.cbentley.framework.core.framework.src4.interfaces.ILauncherHost;
+import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
+import pasa.cbentley.framework.core.j2se.engine.CoordinatorJ2se;
 
 /**
  * Coordinates the {@link ILauncherHost}.
@@ -18,7 +18,7 @@ import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
  * @author Charles Bentley
  *
  */
-public class CoordinatorSwing extends CoordinatorJ2SE {
+public class CoordinatorSwing extends CoordinatorJ2se {
 
    protected final CoreFrameworkSwingCtx scc;
 

@@ -1,15 +1,16 @@
-package pasa.cbentley.framework.core.swing.wrapper;
+package pasa.cbentley.framework.core.framework.swing.wrapper;
 
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDLog;
-import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
-import pasa.cbentley.framework.coreui.src4.engine.CanvasHostAbstract;
-import pasa.cbentley.framework.coreui.src4.engine.WrapperAbstract;
-import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
-import pasa.cbentley.framework.coreui.src4.tech.IBOCanvasHost;
-import pasa.cbentley.framework.coreui.swing.ctx.CoreUiSwingCtx;
+import pasa.cbentley.framework.core.framework.src4.ctx.ObjectCFC;
+import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
+import pasa.cbentley.framework.core.ui.src4.engine.CanvasHostAbstract;
+import pasa.cbentley.framework.core.ui.src4.engine.WrapperAbstract;
+import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
+import pasa.cbentley.framework.core.ui.src4.tech.IBOCanvasHost;
+import pasa.cbentley.framework.core.ui.swing.wrapper.WrapperSwingTopFrame;
 
 /**
  * Canvas owner creates {@link WrapperSwingTopFrame}.
@@ -19,12 +20,18 @@ import pasa.cbentley.framework.coreui.swing.ctx.CoreUiSwingCtx;
  * @author Charles Bentley
  *
  */
-public class CanvasOwnerSwingFrameApp implements IWrapperManager {
+public class WrapperManagerSwingFrameApp extends ObjectCFC implements IWrapperManager {
 
    protected final CoreFrameworkSwingCtx cfc;
 
-   public CanvasOwnerSwingFrameApp(CoreFrameworkSwingCtx cuic) {
-      this.cfc = cuic;
+   public WrapperManagerSwingFrameApp(CoreFrameworkSwingCtx cfc) {
+      super(cfc);
+      this.cfc = cfc;
+   }
+
+   public CanvasHostAbstract createCanvasHost(WrapperAbstract wrapper, ByteObject canvasTech) {
+      // TODO Auto-generated method stub
+      return null;
    }
 
    public WrapperAbstract createNewWrapper(ByteObject tech) {
@@ -35,9 +42,9 @@ public class CanvasOwnerSwingFrameApp implements IWrapperManager {
          //in a controlled env.. the wrapper is a panel and all new windows must be inside the 
          //semi multi. a new component is drawn over the old one.. like in android. screen size is fixed.
       } else if (wrapperType == IBOCanvasHost.TCANVAS_TYPE_1_FRAME) {
-         
+
       } else if (wrapperType == IBOCanvasHost.TCANVAS_TYPE_2_CONTROLLED) {
-         
+
       }
       wrapper = new WrapperSwingTopFrameApp(cfc);
       return wrapper;
@@ -52,47 +59,25 @@ public class CanvasOwnerSwingFrameApp implements IWrapperManager {
    }
 
    public void setTitle(WrapperAbstract wrapper, String title) {
-      
+
    }
-   
+
    //#mdebug
-   public IDLog toDLog() {
-      return toStringGetUCtx().toDLog();
-   }
-
-   public String toString() {
-      return Dctx.toString(this);
-   }
-
    public void toString(Dctx dc) {
-      dc.root(this, "WrapperManagerDefaultSwing");
+      dc.root(this, WrapperManagerSwingFrameApp.class, 67);
       toStringPrivate(dc);
+      super.toString(dc.sup());
    }
 
-   public String toString1Line() {
-      return Dctx.toString1Line(this);
+   public void toString1Line(Dctx dc) {
+      dc.root1Line(this, WrapperManagerSwingFrameApp.class, 67);
+      toStringPrivate(dc);
+      super.toString1Line(dc.sup1Line());
    }
 
    private void toStringPrivate(Dctx dc) {
 
    }
-
-   public void toString1Line(Dctx dc) {
-      dc.root1Line(this, "WrapperManagerDefaultSwing");
-      toStringPrivate(dc);
-   }
-
-   public UCtx toStringGetUCtx() {
-      return cfc.getUC();
-   }
-
-   public CanvasHostAbstract createCanvasHost(WrapperAbstract wrapper, ByteObject canvasTech) {
-      // TODO Auto-generated method stub
-      return null;
-   }
-
    //#enddebug
-   
-
 
 }

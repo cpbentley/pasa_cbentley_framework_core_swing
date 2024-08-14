@@ -1,13 +1,13 @@
-package pasa.cbentley.framework.core.swing.wrapper;
+package pasa.cbentley.framework.core.framework.swing.wrapper;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IStringable;
-import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
-import pasa.cbentley.framework.core.swing.ctx.ObjectCFSwing;
-import pasa.cbentley.framework.coreui.swing.engine.CanvasHostSwing;
+import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
+import pasa.cbentley.framework.core.framework.swing.ctx.ObjectCFSwing;
+import pasa.cbentley.framework.core.ui.swing.engine.CanvasHostSwing;
 
 /**
  * 
@@ -23,13 +23,13 @@ public class FrameAppWindowListener extends ObjectCFSwing implements WindowListe
 
    public FrameAppWindowListener(CoreFrameworkSwingCtx scc, CanvasHostSwing canvas) {
       super(scc);
-      
+
       //#mdebug
-      if(canvas == null) {
+      if (canvas == null) {
          throw new NullPointerException();
       }
       //#enddebug
-      
+
       this.canvas = canvas;
    }
 
@@ -64,6 +64,8 @@ public class FrameAppWindowListener extends ObjectCFSwing implements WindowListe
    }
 
    public void windowClosing(WindowEvent e) {
+      //#debug
+      toDLog().pFlow("", this, FrameAppWindowListener.class, "windowClosing@68", LVL_05_FINE, true);
       //normal behavior is frame is going on hide
       if (scc.getCUC().getCanvasRootHost() == canvas) {
          try {

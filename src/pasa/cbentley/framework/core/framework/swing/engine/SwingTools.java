@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.core.swing.engine;
+package pasa.cbentley.framework.core.framework.swing.engine;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -7,14 +7,14 @@ import java.io.File;
 import javax.swing.JFileChooser;
 
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
-import pasa.cbentley.framework.core.j2se.engine.CoreToolsJ2SE;
-import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
-import pasa.cbentley.framework.coreio.src4.file.IFileConnection;
-import pasa.cbentley.framework.coreio.src5.engine.FileConnectionSrc5;
-import pasa.cbentley.framework.coreui.src4.interfaces.ICanvasHost;
-import pasa.cbentley.framework.coreui.swing.engine.CanvasSwing;
+import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
+import pasa.cbentley.framework.core.io.src4.file.IFileConnection;
+import pasa.cbentley.framework.core.io.src5.engine.FileConnectionSrc5;
+import pasa.cbentley.framework.core.j2se.engine.CoreToolsJ2se;
+import pasa.cbentley.framework.core.ui.src4.interfaces.ICanvasHost;
+import pasa.cbentley.framework.core.ui.swing.engine.CanvasSwing;
 
-public class SwingTools extends CoreToolsJ2SE {
+public class SwingTools extends CoreToolsJ2se {
 
    protected final CoreFrameworkSwingCtx csc;
 

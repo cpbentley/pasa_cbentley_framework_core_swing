@@ -1,25 +1,25 @@
-package pasa.cbentley.framework.core.swing.wrapper;
+package pasa.cbentley.framework.core.framework.swing.wrapper;
 
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDLog;
-import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
-import pasa.cbentley.framework.coreui.src4.engine.CanvasHostAbstract;
-import pasa.cbentley.framework.coreui.src4.engine.WrapperAbstract;
-import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
+import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
+import pasa.cbentley.framework.core.ui.src4.engine.CanvasHostAbstract;
+import pasa.cbentley.framework.core.ui.src4.engine.WrapperAbstract;
+import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
 
-public class OwnerControl implements IWrapperManager {
+public class WrapperManagerControl implements IWrapperManager {
 
    protected final CoreFrameworkSwingCtx csc;
 
-   public OwnerControl(CoreFrameworkSwingCtx csc) {
+   public WrapperManagerControl(CoreFrameworkSwingCtx csc) {
       this.csc = csc;
    }
 
    public void setTitle(WrapperAbstract wrapper, String title) {
-      if(wrapper instanceof SwingCanvasWrapperBorderLayout) {
-         SwingCanvasWrapperBorderLayout w = (SwingCanvasWrapperBorderLayout)wrapper;
+      if(wrapper instanceof WrapperBorderLayoutSwing) {
+         WrapperBorderLayoutSwing w = (WrapperBorderLayoutSwing)wrapper;
          w.setTitle(title);
       } else {
          throw new IllegalArgumentException();
@@ -36,7 +36,7 @@ public class OwnerControl implements IWrapperManager {
    }
 
    public WrapperAbstract createNewWrapper(ByteObject tech) {
-      return new SwingCanvasWrapperBorderLayout(csc);
+      return new WrapperBorderLayoutSwing(csc);
    }
    
    //#mdebug

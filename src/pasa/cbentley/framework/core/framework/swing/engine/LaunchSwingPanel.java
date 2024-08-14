@@ -1,21 +1,21 @@
-package pasa.cbentley.framework.core.swing.engine;
+package pasa.cbentley.framework.core.framework.swing.engine;
 
 import java.awt.Component;
 
 import pasa.cbentley.core.src4.ctx.UCtx;
+import pasa.cbentley.framework.core.data.src5.ctx.IConfigCoreData5;
+import pasa.cbentley.framework.core.draw.swing.ctx.IConfigCoreDrawSwing;
+import pasa.cbentley.framework.core.framework.src4.app.IConfigApp;
+import pasa.cbentley.framework.core.framework.src4.ctx.CoreFrameworkCtx;
+import pasa.cbentley.framework.core.framework.src4.interfaces.ICreatorAppli;
+import pasa.cbentley.framework.core.framework.swing.ctx.ConfigCoreFrameworkSwingDefault;
+import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
+import pasa.cbentley.framework.core.framework.swing.ctx.IConfigCoreFrameworkSwing;
+import pasa.cbentley.framework.core.io.src5.ctx.IConfigCoreIO5;
 import pasa.cbentley.framework.core.j2se.ctx.IConfigCoreFrameworkJ2SE;
-import pasa.cbentley.framework.core.src4.app.IConfigApp;
-import pasa.cbentley.framework.core.src4.ctx.CoreFrameworkCtx;
-import pasa.cbentley.framework.core.src4.interfaces.ICreatorAppli;
-import pasa.cbentley.framework.core.swing.ctx.ConfigCoreFrameworkSwingDefault;
-import pasa.cbentley.framework.core.swing.ctx.CoreFrameworkSwingCtx;
-import pasa.cbentley.framework.core.swing.ctx.IConfigCoreFrameworkSwing;
-import pasa.cbentley.framework.coredata.src5.ctx.IConfigCoreData5;
-import pasa.cbentley.framework.coredraw.swing.ctx.IConfigCoreDrawSwing;
-import pasa.cbentley.framework.coreio.src5.ctx.IConfigCoreIO5;
-import pasa.cbentley.framework.coreui.src4.interfaces.IWrapperManager;
-import pasa.cbentley.framework.coreui.swing.ctx.IConfigCoreUiSwing;
-import pasa.cbentley.framework.coreui.swing.engine.CanvasSwing;
+import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
+import pasa.cbentley.framework.core.ui.swing.ctx.IConfigCoreUiSwing;
+import pasa.cbentley.framework.core.ui.swing.engine.CanvasSwing;
 
 /**
  * Launcher for a Drawable used by Swing code

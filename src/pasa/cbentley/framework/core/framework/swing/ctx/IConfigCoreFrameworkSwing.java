@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.core.swing.ctx;
+package pasa.cbentley.framework.core.framework.swing.ctx;
 
 import pasa.cbentley.framework.core.j2se.ctx.IConfigCoreFrameworkJ2SE;
 
