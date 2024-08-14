@@ -5,12 +5,12 @@ import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDLog;
 import pasa.cbentley.core.src4.logging.IStringable;
 
-public class ObjectCFSwing implements IStringable {
+public class ObjectCFCSwing implements IStringable {
 
-   protected CoreFrameworkSwingCtx scc;
+   protected CoreFrameworkSwingCtx cfc;
 
-   public ObjectCFSwing(CoreFrameworkSwingCtx scc) {
-      this.scc = scc;
+   public ObjectCFCSwing(CoreFrameworkSwingCtx cfc) {
+      this.cfc = cfc;
    }
    
    //#mdebug
@@ -23,7 +23,7 @@ public class ObjectCFSwing implements IStringable {
    }
 
    public void toString(Dctx dc) {
-      dc.root(this, ObjectCFSwing.class, 26);
+      dc.root(this, ObjectCFCSwing.class, 26);
       toStringPrivate(dc);
    }
 
@@ -36,12 +36,12 @@ public class ObjectCFSwing implements IStringable {
    }
 
    public void toString1Line(Dctx dc) {
-      dc.root1Line(this, ObjectCFSwing.class);
+      dc.root1Line(this, ObjectCFCSwing.class);
       toStringPrivate(dc);
    }
 
    public UCtx toStringGetUCtx() {
-      return scc.getUC();
+      return cfc.getUC();
    }
 
    //#enddebug

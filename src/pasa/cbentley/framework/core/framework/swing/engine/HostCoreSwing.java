@@ -11,7 +11,7 @@ import pasa.cbentley.core.src4.interfaces.IHostService;
 import pasa.cbentley.core.src4.interfaces.ITimeCtrl;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
-import pasa.cbentley.framework.core.framework.swing.ctx.ObjectCFSwing;
+import pasa.cbentley.framework.core.framework.swing.ctx.ObjectCFCSwing;
 import pasa.cbentley.framework.core.j2se.engine.HostCoreJ2se;
 import pasa.cbentley.framework.core.ui.j2se.engine.TimeControlJ2se;
 import pasa.cbentley.swing.ctx.SwingCtx;

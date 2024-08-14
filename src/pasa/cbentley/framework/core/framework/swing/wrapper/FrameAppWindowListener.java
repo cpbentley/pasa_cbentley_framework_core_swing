@@ -6,22 +6,22 @@ import java.awt.event.WindowListener;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IStringable;
 import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
-import pasa.cbentley.framework.core.framework.swing.ctx.ObjectCFSwing;
-import pasa.cbentley.framework.core.ui.swing.engine.CanvasHostSwing;
+import pasa.cbentley.framework.core.framework.swing.ctx.ObjectCFCSwing;
+import pasa.cbentley.framework.core.ui.swing.engine.CanvasHostSwingAbstract;
 
 /**
  * 
  * @author Charles Bentley
  *
  */
-public class FrameAppWindowListener extends ObjectCFSwing implements WindowListener, IStringable {
+public class FrameAppWindowListener extends ObjectCFCSwing implements WindowListener, IStringable {
 
    /**
     * not null
     */
-   private CanvasHostSwing canvas;
+   private CanvasHostSwingAbstract canvas;
 
-   public FrameAppWindowListener(CoreFrameworkSwingCtx scc, CanvasHostSwing canvas) {
+   public FrameAppWindowListener(CoreFrameworkSwingCtx scc, CanvasHostSwingAbstract canvas) {
       super(scc);
 
       //#mdebug
@@ -67,13 +67,13 @@ public class FrameAppWindowListener extends ObjectCFSwing implements WindowListe
       //#debug
       toDLog().pFlow("", this, FrameAppWindowListener.class, "windowClosing@68", LVL_05_FINE, true);
       //normal behavior is frame is going on hide
-      if (scc.getCUC().getCanvasRootHost() == canvas) {
+      if (cfc.getCUC().getCanvasRootHost() == canvas) {
          try {
             //exit only if last active JFrame or the root JFrame
             //we have no idea at this level how to handle destroys
-            scc.getCoordinator().appliWantBeDestroyed();
+            cfc.getCoordinator().appliWantBeDestroyed();
          } catch (Exception ex) {
-            scc.toDLog().pEx("Exception Caught during Exit Routine. Forcing exit.... signing off", null, FrameAppWindowListener.class, "", ex);
+            cfc.toDLog().pEx("Exception Caught during Exit Routine. Forcing exit.... signing off", null, FrameAppWindowListener.class, "", ex);
          }
       } else {
 
@@ -89,13 +89,13 @@ public class FrameAppWindowListener extends ObjectCFSwing implements WindowListe
       //#debug
       toDLog().pFlow("", this, FrameAppWindowListener.class, "windowDeiconified@77", LVL_03_FINEST, true);
       //generate event
-      scc.getCoordinatorSwing().frameworkResume();
+      cfc.getCoordinatorSwing().frameworkResume();
    }
 
    public void windowIconified(WindowEvent e) {
       //#debug
       toDLog().pFlow("", this, FrameAppWindowListener.class, "windowIconified@84", LVL_03_FINEST, true);
-      scc.getCoordinatorSwing().frameworkPause();
+      cfc.getCoordinatorSwing().frameworkPause();
    }
 
    public void windowOpened(WindowEvent e) {

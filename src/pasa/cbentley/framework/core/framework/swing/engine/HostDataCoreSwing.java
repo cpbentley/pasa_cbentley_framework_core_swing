@@ -4,7 +4,7 @@ import pasa.cbentley.core.src4.interfaces.IHostData;
 import pasa.cbentley.framework.core.draw.swing.engine.HostDataDrawSwing;
 import pasa.cbentley.framework.core.framework.src4.interfaces.ITechHostDataDrawUICore;
 import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
-import pasa.cbentley.framework.core.framework.swing.ctx.ObjectCFSwing;
+import pasa.cbentley.framework.core.framework.swing.ctx.ObjectCFCSwing;
 import pasa.cbentley.framework.core.j2se.engine.HostDataCoreJ2se;
 
 /**

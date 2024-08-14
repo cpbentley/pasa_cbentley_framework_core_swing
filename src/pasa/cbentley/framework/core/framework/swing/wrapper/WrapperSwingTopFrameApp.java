@@ -9,7 +9,7 @@ import pasa.cbentley.framework.core.framework.src4.engine.CoordinatorAbstract;
 import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.framework.swing.ctx.ITechStatorableCoreFrameworkSwing;
 import pasa.cbentley.framework.core.ui.swing.ctx.ITechStatorableCoreUiSwing;
-import pasa.cbentley.framework.core.ui.swing.engine.CanvasHostSwing;
+import pasa.cbentley.framework.core.ui.swing.engine.CanvasHostSwingAbstract;
 import pasa.cbentley.framework.core.ui.swing.wrapper.WrapperSwingTopFrame;
 
 /**
@@ -60,7 +60,7 @@ public class WrapperSwingTopFrameApp extends WrapperSwingTopFrame {
    /**
     * Sets the Canvas to the frame
     */
-   public void addCanvas(CanvasHostSwing ac) {
+   public void addCanvas(CanvasHostSwingAbstract ac) {
       super.addCanvas(ac); //must be called first
       //we want the event app exit to be processed last
       wrapperWindowListener = new FrameAppWindowListener(scc, ac);

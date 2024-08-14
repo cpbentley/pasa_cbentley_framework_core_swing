@@ -56,7 +56,7 @@ public class CoreFrameworkSwingCtx extends CoreFrameworkJ2seCtx {
       }
 
       //#debug
-      toDLog().pInit("", this, CoreFrameworkSwingCtx.class, "Created@47", LVL_04_FINER, true);
+      toDLog().pCreate("", this, CoreFrameworkSwingCtx.class, "Created@47", LVL_04_FINER, true);
    }
 
    public IHost createHost() {
@@ -103,14 +103,14 @@ public class CoreFrameworkSwingCtx extends CoreFrameworkJ2seCtx {
 
    //#mdebug
    public void toString(Dctx dc) {
-      dc.root(this, CoreFrameworkSwingCtx.class, "@line86");
+      dc.root(this, CoreFrameworkSwingCtx.class, 106);
       toStringPrivate(dc);
       super.toString(dc.sup());
       dc.nlLvl(config, IConfigCoreFrameworkSwing.class);
    }
 
    public void toString1Line(Dctx dc) {
-      dc.root1Line(this, CoreFrameworkSwingCtx.class);
+      dc.root1Line(this, CoreFrameworkSwingCtx.class,113);
       toStringPrivate(dc);
       super.toString1Line(dc.sup1Line());
    }

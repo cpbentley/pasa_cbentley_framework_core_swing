@@ -15,7 +15,7 @@ import pasa.cbentley.framework.core.io.src5.ctx.IConfigCoreIO5;
 import pasa.cbentley.framework.core.j2se.ctx.IConfigCoreFrameworkJ2SE;
 import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.core.ui.swing.ctx.IConfigCoreUiSwing;
-import pasa.cbentley.framework.core.ui.swing.engine.CanvasSwing;
+import pasa.cbentley.framework.core.ui.swing.engine.CanvasHostSwing;
 
 /**
  * Launcher for a Drawable used by Swing code
@@ -44,8 +44,8 @@ public class LaunchSwingPanel extends LaunchSwingAbstract {
     * Returns the main canvas swing used
     * @return
     */
-   public CanvasSwing getCanvasSwing() {
-      return (CanvasSwing) getCFCSwing().getCoreUiSwingCtx().getCanvasRootHost();
+   public CanvasHostSwing getCanvasSwing() {
+      return (CanvasHostSwing) getCFCSwing().getCoreUiSwingCtx().getCanvasRootHost();
    }
 
    public IConfigCoreFrameworkJ2SE createConfigCoreJ2SE(UCtx uc) {

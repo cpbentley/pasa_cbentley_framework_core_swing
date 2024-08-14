@@ -7,13 +7,13 @@ import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IStringable;
 import pasa.cbentley.framework.core.framework.src4.ctx.ObjectCFC;
 import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
-import pasa.cbentley.framework.core.ui.swing.engine.CanvasHostSwing;
+import pasa.cbentley.framework.core.ui.swing.engine.CanvasHostSwingAbstract;
 
 public class FrameAppWindowFocusListener extends ObjectCFC implements WindowFocusListener, IStringable {
 
-   private CanvasHostSwing canvas;
+   private CanvasHostSwingAbstract canvas;
 
-   public FrameAppWindowFocusListener(CoreFrameworkSwingCtx cfc, CanvasHostSwing canvas) {
+   public FrameAppWindowFocusListener(CoreFrameworkSwingCtx cfc, CanvasHostSwingAbstract canvas) {
       super(cfc);
       this.canvas = canvas;
    }

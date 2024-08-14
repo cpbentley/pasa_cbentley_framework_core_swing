@@ -12,7 +12,7 @@ import pasa.cbentley.framework.core.io.src4.file.IFileConnection;
 import pasa.cbentley.framework.core.io.src5.engine.FileConnectionSrc5;
 import pasa.cbentley.framework.core.j2se.engine.CoreToolsJ2se;
 import pasa.cbentley.framework.core.ui.src4.interfaces.ICanvasHost;
-import pasa.cbentley.framework.core.ui.swing.engine.CanvasSwing;
+import pasa.cbentley.framework.core.ui.swing.engine.CanvasHostSwing;
 
 public class SwingTools extends CoreToolsJ2se {
 
@@ -39,8 +39,8 @@ public class SwingTools extends CoreToolsJ2se {
       fc.setPreferredSize(d);
       fc.setDialogTitle("");
       Component compo = null;
-      if(context instanceof CanvasSwing) {
-         CanvasSwing cs = (CanvasSwing) context;
+      if(context instanceof CanvasHostSwing) {
+         CanvasHostSwing cs = (CanvasHostSwing) context;
          compo = cs.getRealCanvas();
       }
       int r = fc.showOpenDialog(compo);
