@@ -8,6 +8,7 @@ import pasa.cbentley.core.src4.stator.StatorWriter;
 import pasa.cbentley.framework.core.framework.src4.engine.CoordinatorAbstract;
 import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.framework.swing.ctx.ITechStatorableCoreFrameworkSwing;
+import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.core.ui.swing.ctx.ITechStatorableCoreUiSwing;
 import pasa.cbentley.framework.core.ui.swing.engine.CanvasHostSwingAbstract;
 import pasa.cbentley.framework.core.ui.swing.wrapper.WrapperSwingTopFrame;

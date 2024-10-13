@@ -15,9 +15,18 @@ import javax.swing.JPanel;
 
 import pasa.cbentley.core.src4.ctx.ICtx;
 import pasa.cbentley.core.src4.logging.Dctx;
+import pasa.cbentley.framework.core.framework.src4.app.IAppli;
 import pasa.cbentley.framework.core.framework.src4.app.ITechAppli;
+import pasa.cbentley.framework.core.framework.src4.interfaces.ICreatorAppli;
 import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.framework.swing.ctx.ITechStatorableCoreFrameworkSwing;
+import pasa.cbentley.framework.core.framework.swing.engine.CoordinatorSwing;
+import pasa.cbentley.framework.core.ui.src4.event.AppliEvent;
+import pasa.cbentley.framework.core.ui.src4.event.BEvent;
+import pasa.cbentley.framework.core.ui.src4.interfaces.ITechEventApp;
+import pasa.cbentley.framework.core.ui.src4.interfaces.ITechEventHost;
+import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
+import pasa.cbentley.framework.core.ui.swing.ctx.CoreUiSwingCtx;
 import pasa.cbentley.framework.core.ui.swing.engine.CanvasHostSwingAbstract;
 import pasa.cbentley.framework.core.ui.swing.wrapper.WrapperAbstractSwing;
 import pasa.cbentley.swing.window.CBentleyFrame;
@@ -32,6 +41,8 @@ import pasa.cbentley.swing.window.CBentleyFrame;
 public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements ActionListener {
 
    private JButton               buttonPause;
+
+   private JButton               buttonResume;
 
    private JButton               buttonStart;
 
@@ -63,9 +74,12 @@ public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements Ac
       buttonStart.addActionListener(this);
       buttonPause = new JButton("Pause");
       buttonPause.addActionListener(this);
+      buttonResume = new JButton("Resume");
+      buttonResume.addActionListener(this);
       north.add(buttonStop);
       north.add(buttonStart);
       north.add(buttonPause);
+      north.add(buttonResume);
 
       imgIconButton = new JButton();
       north.add(imgIconButton);
@@ -78,6 +92,7 @@ public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements Ac
       panel.add(south, BorderLayout.SOUTH);
 
       JButton buttonEast = new JButton("East");
+
       JButton button1 = new JButton("One");
       JButton button2 = new JButton("Two");
       JButton button3 = new JButton("Three");
@@ -108,24 +123,74 @@ public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements Ac
       frame.getContentPane().add(panel);
    }
 
-   public void actionPerformed(ActionEvent e) {
-      if (e.getSource() == buttonStart) {
-         scc.getCoordinatorSwing().frameworkRestart();
-      } else if (e.getSource() == buttonStop) {
-         scc.getCoordinatorSwing().frameworkExit();
-         Component realCanvas = canvas.getRealCanvas();
-         //remove the canvas
-         panel.remove(realCanvas);
-         panel.repaint();
-      } else if (e.getSource() == buttonPause) {
-         if (scc.getCoordinator().getAppli().getState() == ITechAppli.STATE_2_STARTED) {
-            scc.getCoordinator().frameworkPause();
-         } else {
-            scc.getCoordinator().frameworkResume();
-         }
+   /**
+    * <li>
+    */
+   private void actionStart() {
+      CoordinatorSwing coordinatorSwing = scc.getCoordinatorSwing();
+      CoreUiSwingCtx cuc = coordinatorSwing.getCUCSwing();
+      IAppli app = coordinatorSwing.getAppli();
+      if (app != null) {
+         cuc.publishMessageOnRoot("Application is already Started");
+      } else {
+         //when starting an appli, we need a fresh new UC
+         //we need a new launcher object and a new CFC
+         
+         //do we need a creator ?
+         ICreatorAppli creatorAppli = coordinatorSwing.getCreatorAppli();
+         creatorAppli.createAppOnFramework(scc); //one time use
+
+         //the launcher host decides which wrapper manager is used
+
+         //we want to create it inside this wrapper. and not creating a new one.
       }
    }
 
+   public void actionPerformed(ActionEvent e) {
+      if (e.getSource() == buttonStart) {
+         this.actionStart();
+      } else if (e.getSource() == buttonStop) {
+         actionStop();
+      } else if (e.getSource() == buttonPause) {
+         actionPause();
+      } else if (e.getSource() == buttonResume) {
+         actionResume();
+      }
+   }
+
+   private void actionResume() {
+      CoordinatorSwing coordinatorSwing = scc.getCoordinatorSwing();
+      IAppli app = coordinatorSwing.getAppli();
+      if (app.getState() == ITechAppli.STATE_3_PAUSED) {
+         coordinatorSwing.frameworkResume();
+      } else {
+         cuc.publishMessageOnRoot("Application is already Running");
+      }
+   }
+
+   private void actionPause() {
+      CoordinatorSwing coordinatorSwing = scc.getCoordinatorSwing();
+      IAppli app = coordinatorSwing.getAppli();
+      if (app.getState() == ITechAppli.STATE_2_STARTED) {
+         coordinatorSwing.frameworkPause();
+      } else {
+         cuc.publishMessageOnRoot("Application is already Paused");
+      }
+   }
+
+   private void actionStop() {
+      CoordinatorSwing coordinatorSwing = scc.getCoordinatorSwing();
+      coordinatorSwing.frameworkExit();
+      Component realCanvas = canvas.getRealCanvas();
+      //remove the canvas
+      panel.remove(realCanvas);
+      panel.repaint();
+   }
+
+   /**
+    * 
+    * 
+    */
    public void addCanvas(CanvasHostSwingAbstract canvas) {
       Component cc = canvas.getRealCanvas();
       panel.add(cc, BorderLayout.CENTER);
@@ -201,13 +266,13 @@ public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements Ac
    public void setTitle(String str) {
       titleLabel.setText(str);
    }
-   
+
    //#mdebug
    public void toString(Dctx dc) {
       dc.root(this, WrapperBorderLayoutSwing.class, 207);
       toStringPrivate(dc);
       super.toString(dc.sup());
-      
+
       dc.nlLvl(frame, "frame");
    }
 
@@ -218,10 +283,8 @@ public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements Ac
    }
 
    private void toStringPrivate(Dctx dc) {
-      
+
    }
    //#enddebug
-   
-
 
 }

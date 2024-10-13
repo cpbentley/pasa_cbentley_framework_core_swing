@@ -9,6 +9,7 @@ import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.ui.j2se.engine.WrapperAbstractJ2se;
 import pasa.cbentley.framework.core.ui.src4.engine.CanvasHostAbstract;
+import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.swing.window.CBentleyFrame;
 
 public class WrapperTabPane extends WrapperAbstractJ2se {

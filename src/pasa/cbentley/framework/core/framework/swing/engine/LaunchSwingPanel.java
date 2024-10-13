@@ -12,7 +12,7 @@ import pasa.cbentley.framework.core.framework.swing.ctx.ConfigCoreFrameworkSwing
 import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.framework.swing.ctx.IConfigCoreFrameworkSwing;
 import pasa.cbentley.framework.core.io.src5.ctx.IConfigCoreIO5;
-import pasa.cbentley.framework.core.j2se.ctx.IConfigCoreFrameworkJ2SE;
+import pasa.cbentley.framework.core.j2se.ctx.IConfigCoreFrameworkJ2se;
 import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.core.ui.swing.ctx.IConfigCoreUiSwing;
 import pasa.cbentley.framework.core.ui.swing.engine.CanvasHostSwing;
@@ -48,7 +48,7 @@ public class LaunchSwingPanel extends LaunchSwingAbstract {
       return (CanvasHostSwing) getCFCSwing().getCoreUiSwingCtx().getCanvasRootHost();
    }
 
-   public IConfigCoreFrameworkJ2SE createConfigCoreJ2SE(UCtx uc) {
+   public IConfigCoreFrameworkJ2se createConfigCoreJ2SE(UCtx uc) {
       return new ConfigCoreFrameworkSwingDefault(uc);
    }
 

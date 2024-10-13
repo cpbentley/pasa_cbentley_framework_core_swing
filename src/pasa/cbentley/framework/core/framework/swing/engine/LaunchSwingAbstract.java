@@ -5,6 +5,7 @@ import pasa.cbentley.core.j2se.ctx.J2seCoreCtx;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src5.ctx.C5Ctx;
+import pasa.cbentley.core.swing.ctx.ConfigSwingCoreDef;
 import pasa.cbentley.core.swing.ctx.SwingCoreCtx;
 import pasa.cbentley.framework.core.data.src5.ctx.CoreData5Ctx;
 import pasa.cbentley.framework.core.draw.j2se.ctx.CoreDrawJ2seCtx;
@@ -13,7 +14,7 @@ import pasa.cbentley.framework.core.draw.swing.ctx.IConfigCoreDrawSwing;
 import pasa.cbentley.framework.core.framework.src4.app.IConfigApp;
 import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.framework.swing.ctx.IConfigCoreFrameworkSwing;
-import pasa.cbentley.framework.core.framework.swing.wrapper.WrapperManagerSwingFrameApp;
+import pasa.cbentley.framework.core.framework.swing.wrapper.WrapperManagerFrameAppSwing;
 import pasa.cbentley.framework.core.io.src5.ctx.CoreIO5Ctx;
 import pasa.cbentley.framework.core.j2se.ctx.CoreFrameworkJ2seCtx;
 import pasa.cbentley.framework.core.j2se.engine.CoordinatorJ2se;
@@ -22,6 +23,8 @@ import pasa.cbentley.framework.core.ui.j2se.ctx.CoreUiJ2seCtx;
 import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.core.ui.swing.ctx.CoreUiSwingCtx;
 import pasa.cbentley.framework.core.ui.swing.ctx.IConfigCoreUiSwing;
+import pasa.cbentley.swing.ctx.ConfigSwingDefault;
+import pasa.cbentley.swing.ctx.IConfigSwing;
 import pasa.cbentley.swing.ctx.SwingCtx;
 
 /**
@@ -80,7 +83,8 @@ public abstract class LaunchSwingAbstract extends LaunchJ2SE {
    }
 
    public J2seCoreCtx createJ2seCtx(UCtx uc, C5Ctx c5, BOCtx boc) {
-      return new SwingCtx(c5);
+      IConfigSwing config = getConfigSwing();
+      return new SwingCtx(config, c5);
    }
 
    /**
@@ -89,11 +93,15 @@ public abstract class LaunchSwingAbstract extends LaunchJ2SE {
     * @return
     */
    public IWrapperManager createWrapperManager(CoreFrameworkJ2seCtx cfc) {
-      return new WrapperManagerSwingFrameApp((CoreFrameworkSwingCtx) cfc);
+      return new WrapperManagerFrameAppSwing((CoreFrameworkSwingCtx) cfc);
    }
 
    public CoreFrameworkSwingCtx getCFCSwing() {
       return (CoreFrameworkSwingCtx) cfc;
+   }
+
+   public IConfigSwing getConfigSwing() {
+      return new ConfigSwingDefault();
    }
 
    //#mdebug

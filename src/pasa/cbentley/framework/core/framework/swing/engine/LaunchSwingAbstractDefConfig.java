@@ -16,6 +16,11 @@ import pasa.cbentley.framework.core.io.src5.ctx.IConfigCoreIO5;
 import pasa.cbentley.framework.core.ui.swing.ctx.ConfigCoreUiSwingDef;
 import pasa.cbentley.framework.core.ui.swing.ctx.IConfigCoreUiSwing;
 
+/**
+ * Only uses default Configs for Swing
+ * @author Charles Bentley
+ *
+ */
 public abstract class LaunchSwingAbstractDefConfig extends LaunchSwingAbstract {
 
    public LaunchSwingAbstractDefConfig() {
