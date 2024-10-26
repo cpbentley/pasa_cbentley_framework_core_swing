@@ -2,6 +2,7 @@ package pasa.cbentley.framework.core.framework.swing.engine;
 
 import pasa.cbentley.byteobjects.src4.ctx.BOCtx;
 import pasa.cbentley.core.j2se.ctx.J2seCoreCtx;
+import pasa.cbentley.core.src4.ctx.IConfigU;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src5.ctx.C5Ctx;
@@ -18,7 +19,7 @@ import pasa.cbentley.framework.core.framework.swing.wrapper.WrapperManagerFrameA
 import pasa.cbentley.framework.core.io.src5.ctx.CoreIO5Ctx;
 import pasa.cbentley.framework.core.j2se.ctx.CoreFrameworkJ2seCtx;
 import pasa.cbentley.framework.core.j2se.engine.CoordinatorJ2se;
-import pasa.cbentley.framework.core.j2se.engine.LaunchJ2SE;
+import pasa.cbentley.framework.core.j2se.engine.LauncherJ2se;
 import pasa.cbentley.framework.core.ui.j2se.ctx.CoreUiJ2seCtx;
 import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.core.ui.swing.ctx.CoreUiSwingCtx;
@@ -34,10 +35,14 @@ import pasa.cbentley.swing.ctx.SwingCtx;
  * @author Charles Bentley
  *
  */
-public abstract class LaunchSwingAbstract extends LaunchJ2SE {
+public abstract class LaunchSwingAbstract extends LauncherJ2se {
 
    public LaunchSwingAbstract() {
       super();
+   }
+
+   public LaunchSwingAbstract(IConfigU configU) {
+      super(configU);
    }
 
    public LaunchSwingAbstract(CoreFrameworkSwingCtx cfc) {

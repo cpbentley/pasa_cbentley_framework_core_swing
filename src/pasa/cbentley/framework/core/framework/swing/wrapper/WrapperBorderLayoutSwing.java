@@ -18,10 +18,12 @@ import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.framework.core.framework.src4.app.IAppli;
 import pasa.cbentley.framework.core.framework.src4.app.ITechAppli;
 import pasa.cbentley.framework.core.framework.src4.interfaces.ICreatorAppli;
+import pasa.cbentley.framework.core.framework.src4.interfaces.ILauncherHost;
 import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.framework.swing.ctx.ITechStatorableCoreFrameworkSwing;
 import pasa.cbentley.framework.core.framework.swing.engine.CoordinatorSwing;
-import pasa.cbentley.framework.core.ui.src4.event.AppliEvent;
+import pasa.cbentley.framework.core.j2se.engine.LauncherJ2se;
+import pasa.cbentley.framework.core.ui.src4.event.EventAppli;
 import pasa.cbentley.framework.core.ui.src4.event.BEvent;
 import pasa.cbentley.framework.core.ui.src4.interfaces.ITechEventApp;
 import pasa.cbentley.framework.core.ui.src4.interfaces.ITechEventHost;
@@ -58,6 +60,8 @@ public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements Ac
 
    private JLabel                titleLabel;
 
+   private JButton buttonNewLauncher;
+
    public WrapperBorderLayoutSwing(CoreFrameworkSwingCtx scc) {
       super(scc.getCoreUiSwingCtx());
       this.scc = scc;
@@ -87,8 +91,10 @@ public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements Ac
       panel.add(north, BorderLayout.NORTH);
 
       JPanel south = new JPanel();
-      JButton buttonSouth = new JButton("South");
-      south.add(buttonSouth);
+      buttonNewLauncher = new JButton("New Launcher");
+      buttonNewLauncher.addActionListener(this);
+
+      south.add(buttonNewLauncher);
       panel.add(south, BorderLayout.SOUTH);
 
       JButton buttonEast = new JButton("East");
@@ -123,6 +129,22 @@ public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements Ac
       frame.getContentPane().add(panel);
    }
 
+   private void actionNewLauncher() {
+      CoordinatorSwing coordinatorSwing = scc.getCoordinatorSwing();
+      try {
+         ILauncherHost launcherHost = coordinatorSwing.getLauncherHost().getClass().newInstance();
+
+         if (launcherHost instanceof LauncherJ2se) {
+            ((LauncherJ2se) launcherHost).launch();
+         } else {
+            throw new IllegalArgumentException();
+         }
+      } catch (InstantiationException | IllegalAccessException e) {
+         // TODO Auto-generated catch block
+         e.printStackTrace();
+      }
+   }
+
    /**
     * <li>
     */
@@ -133,13 +155,12 @@ public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements Ac
       if (app != null) {
          cuc.publishMessageOnRoot("Application is already Started");
       } else {
-         //when starting an appli, we need a fresh new UC
+         //when restarting an appli, we need a fresh new UC
          //we need a new launcher object and a new CFC
-         
+
          //do we need a creator ?
          ICreatorAppli creatorAppli = coordinatorSwing.getCreatorAppli();
-         creatorAppli.createAppOnFramework(scc); //one time use
-
+         coordinatorSwing.frameworkStart(creatorAppli);
          //the launcher host decides which wrapper manager is used
 
          //we want to create it inside this wrapper. and not creating a new one.
@@ -155,6 +176,8 @@ public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements Ac
          actionPause();
       } else if (e.getSource() == buttonResume) {
          actionResume();
+      } else if (e.getSource() == buttonNewLauncher) {
+         actionNewLauncher();
       }
    }
 
@@ -163,6 +186,7 @@ public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements Ac
       IAppli app = coordinatorSwing.getAppli();
       if (app.getState() == ITechAppli.STATE_3_PAUSED) {
          coordinatorSwing.frameworkResume();
+         canvas.setCanvasAppliActiveTrue();
       } else {
          cuc.publishMessageOnRoot("Application is already Running");
       }
@@ -173,6 +197,7 @@ public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements Ac
       IAppli app = coordinatorSwing.getAppli();
       if (app.getState() == ITechAppli.STATE_2_STARTED) {
          coordinatorSwing.frameworkPause();
+         canvas.setCanvasAppliActiveFalse();
       } else {
          cuc.publishMessageOnRoot("Application is already Paused");
       }
@@ -181,9 +206,13 @@ public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements Ac
    private void actionStop() {
       CoordinatorSwing coordinatorSwing = scc.getCoordinatorSwing();
       coordinatorSwing.frameworkExit();
-      Component realCanvas = canvas.getRealCanvas();
+      canvas.setCanvasAppliActiveFalse();
+      canvas.setStopped();
+      
+      //Component realCanvas = canvas.getRealCanvas();
       //remove the canvas
-      panel.remove(realCanvas);
+      //panel.remove(realCanvas);
+    
       panel.repaint();
    }
 
@@ -192,7 +221,7 @@ public class WrapperBorderLayoutSwing extends WrapperAbstractSwing implements Ac
     * 
     */
    public void addCanvas(CanvasHostSwingAbstract canvas) {
-      Component cc = canvas.getRealCanvas();
+      Component cc = canvas.getComponentOfCanvas();
       panel.add(cc, BorderLayout.CENTER);
    }
 

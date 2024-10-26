@@ -26,7 +26,7 @@ public class WrapperManagerControl extends ObjectCFCSwing implements IWrapperMan
       super(cfc);
 
       //#debug
-      toDLog().pInit("", this, WrapperManagerControl.class, "created@20", LVL_04_FINER, true);
+      toDLog().pInit("", this, WrapperManagerControl.class, "created@30", LVL_04_FINER, true);
    }
 
    public CanvasHostAbstract createCanvasHost(WrapperAbstract wrapper, ByteObject boCanvasHost) {
@@ -40,7 +40,7 @@ public class WrapperManagerControl extends ObjectCFCSwing implements IWrapperMan
     */
    public WrapperAbstract createNewWrapper(ByteObject boCanvasHost) {
       //#debug
-      toDLog().pBridge("", this, WrapperManagerControl.class, "createNewWrapper@27", LVL_05_FINE, true);
+      toDLog().pBridge("", this, WrapperManagerControl.class, "createNewWrapper@43", LVL_05_FINE, true);
 
       if (main == null) {
          main = new WrapperBorderLayoutSwing(cfc);

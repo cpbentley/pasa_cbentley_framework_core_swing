@@ -2,6 +2,8 @@ package pasa.cbentley.framework.core.framework.swing.engine;
 
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
+import pasa.cbentley.framework.core.data.src5.ctx.ConfigCoreData5Default;
+import pasa.cbentley.framework.core.data.src5.ctx.IConfigCoreData5;
 import pasa.cbentley.framework.core.draw.swing.ctx.ConfigCoreDrawSwingDef;
 import pasa.cbentley.framework.core.draw.swing.ctx.IConfigCoreDrawSwing;
 import pasa.cbentley.framework.core.framework.src4.interfaces.ICreatorAppli;
@@ -10,7 +12,7 @@ import pasa.cbentley.framework.core.framework.swing.ctx.CoreFrameworkSwingCtx;
 import pasa.cbentley.framework.core.framework.swing.ctx.IConfigCoreFrameworkSwing;
 import pasa.cbentley.framework.core.io.src5.ctx.ConfigCoreIO5Def;
 import pasa.cbentley.framework.core.io.src5.ctx.IConfigCoreIO5;
-import pasa.cbentley.framework.core.j2se.engine.LaunchJ2SE;
+import pasa.cbentley.framework.core.j2se.engine.LauncherJ2se;
 import pasa.cbentley.framework.core.ui.src4.interfaces.IWrapperManager;
 import pasa.cbentley.framework.core.ui.swing.ctx.ConfigCoreUiSwingDef;
 import pasa.cbentley.framework.core.ui.swing.ctx.IConfigCoreUiSwing;
@@ -27,7 +29,7 @@ import pasa.cbentley.framework.core.ui.swing.wrapper.WrapperManagerDefaultSwing;
 public abstract class LaunchSwingFrame extends LaunchSwingAbstract {
 
    /**
-    * The {@link ICreatorAppli} is set afterwards with {@link LaunchJ2SE#startAppli(ICreatorAppli)}
+    * The {@link ICreatorAppli} is set afterwards with {@link LauncherJ2se#startAppli(ICreatorAppli)}
     */
    public LaunchSwingFrame() {
       super();
@@ -44,7 +46,11 @@ public abstract class LaunchSwingFrame extends LaunchSwingAbstract {
    public IConfigCoreUiSwing createConfigCoreUi(UCtx uc) {
       return new ConfigCoreUiSwingDef(uc);
    }
-
+   public IConfigCoreData5 createConfigCoreData5(UCtx uc) {
+      return new ConfigCoreData5Default(uc);
+   }
+   
+   
    public IConfigCoreDrawSwing createConfigCoreDraw(UCtx uc) {
       return new ConfigCoreDrawSwingDef(uc);
    }

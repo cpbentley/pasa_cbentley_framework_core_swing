@@ -41,7 +41,7 @@ public class SwingTools extends CoreToolsJ2se {
       Component compo = null;
       if(context instanceof CanvasHostSwing) {
          CanvasHostSwing cs = (CanvasHostSwing) context;
-         compo = cs.getRealCanvas();
+         compo = cs.getComponentOfCanvas();
       }
       int r = fc.showOpenDialog(compo);
       if (r == JFileChooser.APPROVE_OPTION) {
